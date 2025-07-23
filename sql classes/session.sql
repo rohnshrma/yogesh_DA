@@ -271,3 +271,123 @@ ORDER BY first_name DESC;
 -- SELECT *: Retrieves all columns from the employees table.
 -- ORDER BY first_name DESC: Sorts the results by first_name in descending order (Z to A).
 -- Concept: ORDER BY sorts query results, and DESC specifies descending order (ASC for ascending is default).
+-- INSERT INTO: SQL command to add new records to a specified table
+-- 'employees': The name of the table where data will be inserted
+-- (first_name, last_name, email, hire_date): Specifies the columns to receive values
+-- Columns must exist in the table; 'employee_id' is assumed to be an auto-incrementing primary key (not listed here)
+INSERT INTO employees (first_name, last_name, email, hire_date) VALUES
+    -- VALUES: Keyword introducing the data to be inserted
+    -- Each tuple in parentheses represents one row of data
+    -- Values must match the order and data type of the specified columns
+    ('Michael', 'Brown', 'michael.brown@email.com', '2021-03-22'), -- Row 1: String literals in single quotes; 'hire_date' is a date
+    ('Emily', 'Davis', NULL, '2020-11-10'), -- Row 2: NULL indicates no email provided; valid for nullable columns
+    ('David', 'Wilson', 'david.wilson@email.com', '2023-07-08'), -- Row 3: Email is a string; date format is YYYY-MM-DD
+    ('Sarah', 'Taylor', 'sarah.taylor@email.com', '2024-02-14'), -- Row 4: Standard record with all values provided
+    ('James', 'Anderson', NULL, '2022-09-05'), -- Row 5: NULL email, indicating optional field
+    ('Laura', 'Martinez', 'laura.martinez@email.com', '2021-05-17'), -- Row 6
+    ('Robert', 'Thomas', 'robert.thomas@email.com', '2023-12-01'), -- Row 7
+    ('Emma', 'Garcia', NULL, '2020-08-23'), -- Row 8: Another NULL email
+    ('William', 'Lee', 'william.lee@email.com', '2024-06-30'), -- Row 9
+    ('Olivia', 'Walker', 'olivia.walker@email.com', '2022-04-12'), -- Row 10
+    ('Daniel', 'Hall', NULL, '2021-10-19'), -- Row 11
+    ('Sophia', 'Allen', 'sophia.allen@email.com', '2023-03-03'), -- Row 12
+    ('Matthew', 'Young', 'matthew.young@email.com', '2020-12-15'), -- Row 13
+    ('Ava', 'Hernandez', NULL, '2022-07-27'), -- Row 14
+    ('Joseph', 'King', 'joseph.king@email.com', '2024-01-09'), -- Row 15
+    ('Mia', 'Wright', 'mia.wright@email.com', '2021-02-28'), -- Row 16
+    ('Thomas', 'Lopez', NULL, '2023-08-14'), -- Row 17
+    ('Charlotte', 'Scott', 'charlotte.scott@email.com', '2020-10-05'), -- Row 18
+    ('Charles', 'Green', 'charles.green@email.com', '2022-11-22'), -- Row 19
+    ('Amelia', 'Adams', NULL, '2021-06-18'), -- Row 20
+    ('Christopher', 'Baker', 'christopher.baker@email.com', '2024-04-07'), -- Row 21
+    ('Harper', 'Gonzalez', 'harper.gonzalez@email.com', '2023-05-25'), -- Row 22
+    ('Benjamin', 'Nelson', NULL, '2020-09-13'), -- Row 23
+    ('Evelyn', 'Carter', 'evelyn.carter@email.com', '2022-02-10'), -- Row 24
+    ('Lucas', 'Mitchell', 'lucas.mitchell@email.com', '2021-07-29'), -- Row 25
+    ('Abigail', 'Perez', NULL, '2023-10-04'), -- Row 26
+    ('Henry', 'Roberts', 'henry.roberts@email.com', '2020-12-30'), -- Row 27
+    ('Ella', 'Turner', 'ella.turner@email.com', '2024-03-16'), -- Row 28
+    ('Alexander', 'Phillips', NULL, '2022-08-08'), -- Row 29
+    ('Sofia', 'Campbell', 'sofia.campbell@email.com', '2021-04-21'), -- Row 30
+    ('Jack', 'Parker', 'jack.parker@email.com', '2023-01-27'), -- Row 31
+    ('Grace', 'Evans', NULL, '2020-11-11'), -- Row 32
+    ('Samuel', 'Edwards', 'samuel.edwards@email.com', '2022-05-06'), -- Row 33
+    ('Chloe', 'Collins', 'chloe.collins@email.com', '2024-07-19'), -- Row 34
+    ('Ethan', 'Stewart', NULL, '2021-09-02'), -- Row 35
+    ('Lily', 'Sanchez', 'lily.sanchez@email.com', '2023-06-12'), -- Row 36
+    ('Noah', 'Morris', 'noah.morris@email.com', '2020-10-25'), -- Row 37
+    ('Isabella', 'Rogers', NULL, '2022-03-14'), -- Row 38
+    ('Liam', 'Reed', 'liam.reed@email.com', '2021-08-07'), -- Row 39
+    ('Avery', 'Cook', 'avery.cook@email.com', '2024-02-23'), -- Row 40
+    ('Mason', 'Morgan', NULL, '2023-11-18'), -- Row 41
+    ('Aria', 'Bell', 'aria.bell@email.com', '2020-07-09'), -- Row 42
+    ('Logan', 'Murphy', 'logan.murphy@email.com', '2022-12-04'), -- Row 43
+    ('Scarlett', 'Bailey', NULL, '2021-01-16'), -- Row 44
+    ('Jacob', 'Rivera', 'jacob.rivera@email.com', '2023-04-29'), -- Row 45
+    ('Zoe', 'Cooper', 'zoe.cooper@email.com', '2024-05-13'), -- Row 46
+    ('Elijah', 'Richardson', NULL, '2022-10-20'), -- Row 47
+    ('Mila', 'Cox', 'mila.cox@email.com', '2021-03-05'), -- Row 48
+    ('Daniel', 'Howard', 'daniel.howard@email.com', '2020-06-17'); -- Row 50: Last row; semicolon terminates the statement
+
+-- Query 1: Select the first 5 employees
+-- SELECT: Retrieves data from the specified columns
+-- first_name, last_name, email, hire_date: Columns to include in the result set
+-- FROM employees: Specifies the table to query
+-- LIMIT 5: Restricts the output to only 5 rows
+SELECT first_name, last_name, email, hire_date FROM employees LIMIT 5;
+
+-- Query 2: Select 5 employees, sorted by hire_date, skipping the first 9
+-- SELECT: Retrieves the specified columns
+-- first_name, last_name, email, hire_date: Columns to return
+-- FROM employees: The table being queried
+-- ORDER BY hire_date DESC: Sorts rows by hire_date in descending order (most recent first)
+-- OFFSET 9: Skips the first 9 rows after sorting
+-- LIMIT 5: Returns only the next 5 rows after the offset
+SELECT first_name, last_name, email, hire_date FROM employees ORDER BY hire_date DESC OFFSET 9 LIMIT 5;
+
+-- Query 3: Find the earliest hire date
+-- SELECT MIN(hire_date): Uses the MIN aggregate function to find the earliest date
+-- FROM employees: Queries the entire table
+-- Returns a single value: the smallest (earliest) hire_date
+SELECT MIN(hire_date) FROM employees;
+
+-- Query 4: Find the latest hire date
+-- SELECT MAX(hire_date): Uses the MAX aggregate function to find the latest date
+-- FROM employees: Queries the entire table
+-- Returns a single value: the largest (most recent) hire_date
+SELECT MAX(hire_date) FROM employees;
+
+-- Query 5: Count the total number of employees
+-- SELECT COUNT(employee_id): Counts non-NULL values in the employee_id column
+-- FROM employees: Queries the entire table
+-- Assumes employee_id is a non-nullable primary key; returns the total number of rows
+-- Note: If employee_id does not exist, this query would fail
+SELECT COUNT(employee_id) FROM employees;
+
+-- Query 6: Count the number of non-NULL emails
+-- SELECT COUNT(email): Counts rows where the email column is not NULL
+-- FROM employees: Queries the entire table
+-- Returns the number of employees with a valid email address
+SELECT COUNT(email) FROM employees;
+
+-- Query 7: Select employees with NULL emails
+-- SELECT *: Selects all columns from the table (employee_id, first_name, last_name, email, hire_date)
+-- FROM employees: Specifies the table
+-- WHERE email IS NULL: Filters rows where the email column has no value
+SELECT * FROM employees WHERE email IS NULL;
+
+-- Query 8: Sum of employee_id values
+-- SELECT SUM(employee_id): Adds up all values in the employee_id column
+-- FROM employees: Queries the entire table
+-- Assumes employee_id is a numeric column (e.g., auto-incrementing primary key)
+-- Note: If employee_id does not exist, this query would fail
+-- Returns a single value: the sum of all employee_id values
+SELECT SUM(employee_id) FROM employees;
+
+-- Query 9: Average of employee_id values
+-- SELECT AVG(employee_id): Calculates the arithmetic mean of employee_id values
+-- FROM employees: Queries the entire table
+-- Assumes employee_id is a numeric column
+-- Note: If employee_id does not exist, this query would fail
+-- Returns a single value: the average of all employee_id values
+SELECT AVG(employee_id) FROM employees;
