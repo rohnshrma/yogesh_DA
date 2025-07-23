@@ -3,13 +3,15 @@
 This assignment focuses on analyzing and manipulating a product sales database using SQL. You will create a table, insert data for over 100 products, modify its structure, and perform queries to extract insights using only the following SQL concepts: INSERT, OFFSET, WHERE, AVG, SUM, MIN, MAX, LIMIT, SELECT, SELECT DISTINCT, operators (e.g., =, !=, <, >, <=, >=, LIKE, IN, NOT IN, AND, OR, IS NULL, NOT LIKE, BETWEEN), ALTER TABLE (ADD and DROP COLUMN), and UPDATE.
 
 ## Setup Instructions
+
 1. Create a new database or use an existing one.
 2. Execute the provided SQL commands in the order specified to set up the `product_sales` table and populate it with data for over 100 products.
 3. Answer the analysis tasks by writing SQL queries based solely on the specified SQL concepts.
 4. Submit your queries in a clear, organized format.
 
 ## Database Setup
-Execute the following SQL commands to set up the `product_sales` table and insert data:
+
+Execute the following SQL commands to set up the `product_sales` table:
 
 ```sql
 CREATE TABLE product_sales (
@@ -122,7 +124,9 @@ INSERT INTO product_sales (product_name, category, sale_date, quantity, unit_pri
     ('Storage Bench', 'Furniture', '2023-06-30', 3, 149.99),
     ('USB-C Cable', 'Electronics', '2020-09-15', 25, 14.99),
     ('Bookshelf Corner', 'Furniture', '2022-05-25', 5, 179.99),
-    ('Smart Monitor', 'Electronics', '2024-07-10', 8, 299.99);
+    ('Smart Monitor', 'Electronics', '2024-07-10', 8, 299.99),
+    ('Microwave', 'Appliances', '2021-01-20', 6, 129.99),
+    ('Lamp Set', 'Furniture', '2023-04-10', 10, 49.99);
 
 ALTER TABLE product_sales
 ADD discount DECIMAL(5, 2) CHECK (discount >= 0 AND discount <= 100);
@@ -131,20 +135,32 @@ UPDATE product_sales
 SET discount = 10.00
 WHERE category = 'Electronics';
 
+UPDATE product_sales
+SET discount = 5.00
+WHERE category = 'Appliances';
+
 ALTER TABLE product_sales
 ADD COLUMN region VARCHAR(50);
 
 UPDATE product_sales
-SET region = 'North' WHERE product_name IN ('Laptop Pro', 'Monitor 24"', 'Keyboard', 'Mouse', 'Webcam', 'TV 55"', 'Printer', 'Smartwatch', 'Router', 'Tablet', 'External Drive', 'Camera', 'USB Hub', 'Smart Speaker', 'Laptop Charger', 'Wireless Mouse', 'Bluetooth Speaker', 'Smart Bulb', 'Gaming Console', 'USB Cable', 'Smart TV 65"', 'Wireless Charger', 'Smart Thermostat', 'Fitness Tracker', 'Earphones', 'Smart Doorbell', 'Power Bank', 'Smart Plug', 'Wireless Keyboard', 'Smart Light Strip', 'Action Camera', 'USB Adapter', 'Smart Scale', 'Wireless Earbuds', 'Gaming Mouse', 'Smart Camera', 'HDMI Cable', 'Smart Lock', 'VR Headset', 'Smart Fan', 'Wireless Router', 'Smart Glasses', 'Portable Speaker', 'Smart Hub', 'Gaming Headset', 'Smart Projector', 'USB-C Cable', 'Smart Monitor');
+SET region = 'North'
+WHERE product_name IN ('Laptop Pro', 'Monitor 24"', 'Keyboard', 'Mouse', 'Webcam', 'TV 55"', 'Printer', 'Smartwatch', 'Router', 'Tablet', 'External Drive', 'Camera', 'USB Hub', 'Smart Speaker', 'Laptop Charger', 'Wireless Mouse', 'Bluetooth Speaker', 'Smart Bulb', 'Gaming Console', 'USB Cable', 'Smart TV 65"', 'Wireless Charger', 'Smart Thermostat', 'Fitness Tracker', 'Earphones', 'Smart Doorbell', 'Power Bank', 'Smart Plug', 'Wireless Keyboard', 'Smart Light Strip', 'Action Camera', 'USB Adapter', 'Smart Scale', 'Wireless Earbuds', 'Gaming Mouse', 'Smart Camera', 'HDMI Cable', 'Smart Lock', 'VR Headset', 'Smart Fan', 'Wireless Router', 'Smart Glasses', 'Portable Speaker', 'Smart Hub', 'Gaming Headset', 'Smart Projector', 'USB-C Cable', 'Smart Monitor');
+
 UPDATE product_sales
-SET region = 'South' WHERE product_name IN ('Desk Chair', 'Bookshelf', 'Sofa', 'Desk', 'Bookshelf Small', 'Dining Table', 'Bed Frame', 'Wardrobe', 'Nightstand', 'Bookshelf Large', 'Recliner', 'Dresser', 'Mattress', 'TV Stand', 'Office Chair', 'Bookshelf Medium', 'Dining Chair', 'Side Table', 'Bedside Lamp', 'Sofa Bed', 'Bookshelf Tall', 'Coffee Maker', 'Armchair', 'Mirror', 'Kitchen Table', 'Storage Cabinet', 'Bar Stool', 'Dining Bench', 'Bookshelf Narrow', 'Patio Table', 'Console Table', 'Rocking Chair', 'Folding Table', 'Nightstand Set', 'Bookshelf Wide', 'Dining Set', 'Sofa Set', 'Wall Shelf', 'Patio Chair', 'Coffee Table Set', 'Bookshelf Short', 'Desk Organizer', 'Folding Chair', 'TV Mount', 'Bar Table', 'Storage Bench', 'Bookshelf Corner');
+SET region = 'South'
+WHERE product_name IN ('Desk Chair', 'Bookshelf', 'Sofa', 'Desk', 'Bookshelf Small', 'Dining Table', 'Bed Frame', 'Wardrobe', 'Nightstand', 'Bookshelf Large', 'Recliner', 'Dresser', 'Mattress', 'TV Stand', 'Office Chair', 'Bookshelf Medium', 'Dining Chair', 'Side Table', 'Bedside Lamp', 'Sofa Bed', 'Bookshelf Tall', 'Armchair', 'Mirror', 'Kitchen Table', 'Storage Cabinet', 'Bar Stool', 'Dining Bench', 'Bookshelf Narrow', 'Patio Table', 'Console Table', 'Rocking Chair', 'Folding Table', 'Nightstand Set', 'Bookshelf Wide', 'Dining Set', 'Sofa Set', 'Wall Shelf', 'Patio Chair', 'Coffee Table Set', 'Bookshelf Short', 'Desk Organizer', 'Folding Chair', 'TV Mount', 'Bar Table', 'Storage Bench', 'Bookshelf Corner', 'Lamp Set');
+
 UPDATE product_sales
-SET region = 'East' WHERE product_name IN ('Smartphone X', 'Headphones', 'Speaker', 'Smart Speaker');
+SET region = 'East'
+WHERE product_name IN ('Smartphone X', 'Headphones', 'Speaker', 'Smart Speaker');
+
 UPDATE product_sales
-SET region = 'West' WHERE product_name IN ('Table Lamp', 'Coffee Table', 'Bookshelf Small');
+SET region = 'West'
+WHERE product_name IN ('Table Lamp', 'Coffee Table', 'Bookshelf Small', 'Microwave');
 ```
 
 ## Analysis Tasks
+
 1. Select all columns for sales where the product_name is 'Laptop Pro'.
 2. Select all columns for sales where sale_id is less than 5.
 3. Select all columns for sales where sale_id is greater than or equal to 10.
@@ -177,5 +193,6 @@ SET region = 'West' WHERE product_name IN ('Table Lamp', 'Coffee Table', 'Booksh
 30. Drop the `tax_rate` column from the `product_sales` table.
 
 ## Submission
+
 - Provide the SQL query for each task.
 - Submit your answers in a single Markdown file, with each task numbered and the corresponding SQL query clearly written.
