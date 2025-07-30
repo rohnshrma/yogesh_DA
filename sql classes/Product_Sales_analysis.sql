@@ -209,3 +209,4 @@ WHERE product_name IN ('Table Lamp', 'Coffee Table', 'Microwave');
 -- Task 28: Calculate the sum of quantities sold.
 -- Task 29: Calculate the average unit_price of all sales.
 -- Task 30: Drop the tax_rate column from the product_sales table.
+
