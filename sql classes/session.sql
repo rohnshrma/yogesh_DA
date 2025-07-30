@@ -44,7 +44,7 @@ DROP COLUMN year_of_birth;
 SELECT * FROM employees;
 
 -- 10. Delete rows where first_name is John
-DELETE FROM employees
+DELETE FROM employees;
 WHERE first_name = 'John';
 
 -- 11. Insert a new row
@@ -53,6 +53,7 @@ INSERT INTO employees (first_name, last_name, email, hire_date) VALUES
 
 -- 12. Drop the employees table
 DROP TABLE employees;
+
 
 
 
@@ -259,6 +260,7 @@ SET city = 'Pune';
 
 -- Query 16: Select unique city values
 SELECT DISTINCT city FROM employees;
+
 -- Explanation:
 -- SELECT DISTINCT city: Retrieves unique (non-duplicate) values from the city column.
 -- FROM employees: Specifies the table to query.
@@ -266,8 +268,8 @@ SELECT DISTINCT city FROM employees;
 
 -- Query 17: Select all columns, sorted by first_name in descending order
 SELECT * FROM employees
-ORDER BY first_name DESC;
--- Explanation:
+ORDER BY first_name desc;
+-- Explanation: 
 -- SELECT *: Retrieves all columns from the employees table.
 -- ORDER BY first_name DESC: Sorts the results by first_name in descending order (Z to A).
 -- Concept: ORDER BY sorts query results, and DESC specifies descending order (ASC for ascending is default).
@@ -334,16 +336,18 @@ INSERT INTO employees (first_name, last_name, email, hire_date) VALUES
 -- first_name, last_name, email, hire_date: Columns to include in the result set
 -- FROM employees: Specifies the table to query
 -- LIMIT 5: Restricts the output to only 5 rows
-SELECT first_name, last_name, email, hire_date FROM employees LIMIT 5;
+SELECT first_name, last_name, email, hire_date FROM employees limit 2;
+
 
 -- Query 2: Select 5 employees, sorted by hire_date, skipping the first 9
 -- SELECT: Retrieves the specified columns
 -- first_name, last_name, email, hire_date: Columns to return
 -- FROM employees: The table being queried
 -- ORDER BY hire_date DESC: Sorts rows by hire_date in descending order (most recent first)
--- OFFSET 9: Skips the first 9 rows after sorting
+-- OFFSET 10: Skips the first 10 rows after sorting
 -- LIMIT 5: Returns only the next 5 rows after the offset
-SELECT first_name, last_name, email, hire_date FROM employees ORDER BY hire_date DESC OFFSET 9 LIMIT 5;
+SELECT first_name, last_name, email, hire_date 
+FROM employees ORDER BY hire_date desc offset 10 limit 5 ;
 
 -- Query 3: Find the earliest hire date
 -- SELECT MIN(hire_date): Uses the MIN aggregate function to find the earliest date
