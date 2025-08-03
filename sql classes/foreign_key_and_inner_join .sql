@@ -84,3 +84,90 @@ join authors as a on b.author_id = a.author_id; -- 'join authors as a' assigns t
 -- Selects all columns from the 'authors' table
 -- The '*' is a wildcard that retrieves every column in the table
 select * from authors;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- PRACTICE TASKS TO REINFORCE FOREIGN KEY AND INNER JOIN CONCEPTS
+-- These tasks are designed to help you practice creating tables with foreign keys and querying them with inner joins
+
+-- Task 1: Create a Library Database
+-- Objective: Create tables for publishers and books with a foreign key relationship, and query them using an inner join
+-- Steps:
+-- 1. Create a 'publishers' table with columns:
+--    - publisher_id (serial, primary key)
+--    - publisher_name (varchar(100), not null)
+--    - country (varchar(50))
+-- 2. Create a 'books' table with columns:
+--    - book_id (serial, primary key)
+--    - title (varchar(200), not null)
+--    - publication_year (int)
+--    - publisher_id (int, foreign key referencing publishers.publisher_id)
+-- 3. Insert 3 publishers into the 'publishers' table
+-- 4. Insert 5 books into the 'books' table, ensuring each book has a valid publisher_id
+-- 5. Try inserting a book with an invalid publisher_id to see the foreign key constraint in action
+-- 6. Write a query using an INNER JOIN to display each book’s title and its publisher’s name
+
+-- Task 2: Students and Courses
+-- Objective: Model a relationship between students and courses they are enrolled in
+-- Steps:
+-- 1. Create a 'students' table with columns:
+--    - student_id (serial, primary key)
+--    - student_name (varchar(100), not null)
+--    - email (varchar(100))
+-- 2. Create a 'courses' table with columns:
+--    - course_id (serial, primary key)
+--    - course_name (varchar(100), not null)
+--    - credits (int)
+-- 3. Create an 'enrollments' table with columns:
+--    - enrollment_id (serial, primary key)
+--    - student_id (foreign key referencing students.student_id)
+--    - course_id (foreign key referencing courses.course_id)
+--    - enrollment_date (date)
+-- 4. Insert 3 students and 3 courses
+-- 5. Enroll students in courses by inserting records into the 'enrollments' table
+-- 6. Write an INNER JOIN query to show each enrollment with the student’s name and course name
+
+-- Task 3: Employees and Departments
+-- Objective: Create a database for employees and their departments, using foreign keys and inner joins
+-- Steps:
+-- 1. Create a 'departments' table with columns:
+--    - department_id (serial, primary key)
+--    - department_name (varchar(100), not null)
+-- 2. Create an 'employees' table with columns:
+--    - employee_id (serial, primary key)
+--    - employee_name (varchar(100), not null)
+--    - department_id (foreign key referencing departments.department_id)
+-- 3. Insert 2 departments and 4 employees, ensuring each employee is assigned to a valid department
+-- 4. Write an INNER JOIN query to display each employee’s name and their department’s name
+-- 5. Experiment: Try inserting an employee with an invalid department_id and observe the error
+
+-- Task 4: Extend the Original Database
+-- Objective: Add a new table and use inner joins to combine data
+-- Steps:
+-- 1. Using the existing 'authors' and 'books' tables, create a new table called 'genres' with columns:
+--    - genre_id (serial, primary key)
+--    - genre_name (varchar(50), not null)
+-- 2. Add a 'genre_id' column to the 'books' table as a foreign key referencing genres.genre_id
+-- 3. Insert 3 genres (e.g., Fantasy, Mystery, Romance)
+-- 4. Update the 'books' table to assign a genre_id to each book
+-- 5. Write a query using INNER JOIN to display each book’s title, author’s name, and genre name
+
+-- Task 5: Analyze Inner Join vs. Other Joins
+-- Objective: Understand the difference between INNER JOIN and other join types
+-- Steps:
+-- 1. Using the 'authors' and 'books' tables, modify the INNER JOIN query to use a LEFT JOIN:
+--    select b.book_id, b.title, a.author_name from books as b left join authors as a on b.author_id = a.author_id
+-- 2. Compare the results: Notice if any books appear with a NULL author (they won’t in this case due to the foreign key)
+-- 3. Insert an author who has no books and use a RIGHT JOIN to see authors without books
+-- 4. Write a brief explanation (as a comment) of the differences between INNER JOIN, LEFT JOIN, and RIGHT JOIN based on your results
