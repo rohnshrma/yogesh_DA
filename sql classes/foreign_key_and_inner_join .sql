@@ -39,24 +39,24 @@ create table books(
     
     -- 'foreign key (author_id) references authors(author_id)' defines a foreign key constraint
     -- This ensures that the 'author_id' in the 'books' table must match an existing 'author_id' in the 'authors' table
-    -- It creates a relationship between the 'books' and 'authors' tables
+    -- It enforces data integrity by preventing invalid author_id values
     foreign key (author_id) references authors(author_id)
 );
 
 -- Inserts data into the 'authors' table
 -- Adds three authors with their names and nationalities
 INSERT INTO authors (author_name, nationality) VALUES
-    ('J.K. Rowling', 'British'),        -- Adds author with name 'J.K. Rowling' and nationality 'British'
-    ('George R.R. Martin', 'American'), -- Adds author with name 'George R.R. Martin' and nationality 'American'
-    ('Haruki Murakami', 'Japanese');    -- Adds author with name 'Haruki Murakami' and nationality 'Japanese'
+    ('J.K. Rowling', 'British'),        -- Adds author with author_id 1
+    ('George R.R. Martin', 'American'), -- Adds author with author_id 2
+    ('Haruki Murakami', 'Japanese');    -- Adds author with author_id 3
 
 -- Inserts data into the 'books' table
 -- Adds four books with their titles, publication years, and the author_id linking to the 'authors' table
 INSERT INTO books (title, publication_year, author_id) VALUES
-    ('Harry Potter and the Philosopher''s Stone', 1997, 1), -- Adds book with title, year 1997, and author_id 1 (J.K. Rowling)
-    ('A Game of Thrones', 1996, 2),                        -- Adds book with title, year 1996, and author_id 2 (George R.R. Martin)
-    ('Norwegian Wood', 1987, 3),                           -- Adds book with title, year 1987, and author_id 3 (Haruki Murakami)
-    ('Harry Potter and the Chamber of Secrets', 1998, 1);  -- Adds another book with title, year 1998, and author_id 1 (J.K. Rowling)
+    ('Harry Potter and the Philosopher''s Stone', 1997, 1), -- Book with author_id 1 (J.K. Rowling)
+    ('A Game of Thrones', 1996, 2),                        -- Book with author_id 2 (George R.R. Martin)
+    ('Norwegian Wood', 1987, 3),                           -- Book with author_id 3 (Haruki Murakami)
+    ('Harry Potter and the Chamber of Secrets', 1998, 1);  -- Book with author_id 1 (J.K. Rowling)
 
 -- Attempts to insert a book with an invalid author_id
 -- This will fail because author_id 999 does not exist in the 'authors' table
@@ -67,11 +67,11 @@ INSERT INTO books (title, publication_year, author_id) VALUES
 -- Inserts more authors into the 'authors' table
 -- Adds five additional authors with their names and nationalities
 INSERT INTO authors (author_name, nationality) VALUES
-    ('Toni Morrison', 'American'),         -- Adds author with name 'Toni Morrison' and nationality 'American'
-    ('Gabriel García Márquez', 'Colombian'), -- Adds author with name 'Gabriel García Márquez' and nationality 'Colombian'
-    ('Jane Austen', 'British'),            -- Adds author with name 'Jane Austen' and nationality 'British'
-    ('Chimamanda Ngozi Adichie', 'Nigerian'), -- Adds author with name 'Chimamanda Ngozi Adichie' and nationality 'Nigerian'
-    ('Fyodor Dostoevsky', 'Russian');     -- Adds author with name 'Fyodor Dostoevsky' and nationality 'Russian'
+    ('Toni Morrison', 'American'),         -- Adds author with author_id 4
+    ('Gabriel García Márquez', 'Colombian'), -- Adds author with author_id 5
+    ('Jane Austen', 'British'),            -- Adds author with author_id 6
+    ('Chimamanda Ngozi Adichie', 'Nigerian'), -- Adds author with author_id 7
+    ('Fyodor Dostoevsky', 'Russian');     -- Adds author with author_id 8
 
 -- Selects specific columns from the 'books' and 'authors' tables using an INNER JOIN
 -- An INNER JOIN combines rows from both tables where there is a match based on the specified condition
@@ -80,29 +80,76 @@ from books as b                           -- 'books as b' assigns the alias 'b' 
 join authors as a on b.author_id = a.author_id; -- 'join authors as a' assigns the alias 'a' to the 'authors' table
                                                -- 'on b.author_id = a.author_id' specifies the condition to match rows
                                                -- Only rows where the 'author_id' in 'books' matches the 'author_id' in 'authors' are included
+-- Expected output:
+-- book_id | title                                      | author_name
+-- 1       | Harry Potter and the Philosopher's Stone | J.K. Rowling
+-- 2       | A Game of Thrones                        | George R.R. Martin
+-- 3       | Norwegian Wood                           | Haruki Murakami
+-- 4       | Harry Potter and the Chamber of Secrets  | J.K. Rowling
 
 -- Selects all columns from the 'authors' table
 -- The '*' is a wildcard that retrieves every column in the table
 select * from authors;
+-- Expected output:
+-- author_id | author_name                 | nationality
+-- 1         | J.K. Rowling                | British
+-- 2         | George R.R. Martin          | American
+-- 3         | Haruki Murakami             | Japanese
+-- 4         | Toni Morrison               | American
+-- 5         | Gabriel García Márquez      | Colombian
+-- 6         | Jane Austen                 | British
+-- 7         | Chimamanda Ngozi Adichie    | Nigerian
+-- 8         | Fyodor Dostoevsky           | Russian
 
+-- Selects specific columns using a LEFT JOIN with 'books' as the left table
+-- A LEFT JOIN includes ALL rows from the left table ('books') and matching rows from the right table ('authors')
+-- If there is no match in 'authors', columns from 'authors' (e.g., author_name) will be NULL
+select b.book_id, b.title, a.author_name
+from books as b                           -- 'books as b' assigns the alias 'b' to the 'books' table
+left join authors as a on b.author_id = a.author_id; -- 'left join authors as a' assigns the alias 'a' to the 'authors' table
+                                                    -- 'on b.author_id = a.author_id' specifies the condition to match rows
+-- Explanation: In this case, the results are identical to the INNER JOIN
+-- Reason: The foreign key constraint and 'not null' on books.author_id ensure every book has a valid author_id
+-- Expected output (same as INNER JOIN due to constraints):
+-- book_id | title                                      | author_name
+-- 1       | Harry Potter and the Philosopher's Stone | J.K. Rowling
+-- 2       | A Game of Thrones                        | George R.R. Martin
+-- 3       | Norwegian Wood                           | Haruki Murakami
+-- 4       | Harry Potter and the Chamber of Secrets  | J.K. Rowling
 
+-- Selects specific columns using a LEFT JOIN with 'authors' as the left table
+-- This LEFT JOIN includes ALL rows from the 'authors' table and matching rows from the 'books' table
+-- If an author has no books, columns from 'books' (e.g., book_id, title) will be NULL
+select b.book_id, b.title, a.author_name
+from authors as a                         -- 'authors as a' assigns the alias 'a' to the 'authors' table
+left join books as b on b.author_id = a.author_id; -- 'left join books as b' assigns the alias 'b' to the 'books' table
+                                                  -- 'on b.author_id = a.author_id' specifies the condition to match rows
+-- Expected output:
+-- book_id | title                                      | author_name
+-- 1       | Harry Potter and the Philosopher's Stone | J.K. Rowling
+-- 4       | Harry Potter and the Chamber of Secrets  | J.K. Rowling
+-- 2       | A Game of Thrones                        | George R.R. Martin
+-- 3       | Norwegian Wood                           | Haruki Murakami
+-- NULL    | NULL                                     | Toni Morrison
+-- NULL    | NULL                                     | Gabriel García Márquez
+-- NULL    | NULL                                     | Jane Austen
+-- NULL    | NULL                                     | Chimamanda Ngozi Adichie
+-- NULL    | NULL                                     | Fyodor Dostoevsky
+-- Explanation: This query shows all authors, including those without books
+-- Authors with author_id 4, 5, 6, 7, and 8 have no books, so book_id and title are NULL
 
+-- Explanation of INNER JOIN vs. LEFT JOIN:
+-- INNER JOIN: Only includes rows where there is a match in both tables (e.g., books with valid authors)
+-- LEFT JOIN (books as left): Includes all books, with NULL for author_name if no matching author (not possible here due to foreign key)
+-- LEFT JOIN (authors as left): Includes all authors, with NULL for book_id and title if an author has no books
+-- The second LEFT JOIN demonstrates the key difference, as authors like Toni Morrison have no books, resulting in NULL values
 
+-- REVISED PRACTICE TASKS TO REINFORCE FOREIGN KEY, INNER JOIN, AND LEFT JOIN CONCEPTS
+-- These tasks focus on creating tables with foreign keys and querying with INNER JOIN and LEFT JOIN
+-- RIGHT JOIN references have been removed as requested
 
-
-
-
-
-
-
-
-
-
--- PRACTICE TASKS TO REINFORCE FOREIGN KEY AND INNER JOIN CONCEPTS
--- These tasks are designed to help you practice creating tables with foreign keys and querying them with inner joins
-
--- Task 1: Create a Library Database
--- Objective: Create tables for publishers and books with a foreign key relationship, and query them using an inner join
+-- Task 1: Library Database with Publishers and Books
+-- Objective: Create tables with a foreign key and query using INNER JOIN and LEFT JOIN
 -- Steps:
 -- 1. Create a 'publishers' table with columns:
 --    - publisher_id (serial, primary key)
@@ -112,14 +159,16 @@ select * from authors;
 --    - book_id (serial, primary key)
 --    - title (varchar(200), not null)
 --    - publication_year (int)
---    - publisher_id (int, foreign key referencing publishers.publisher_id)
+--    - publisher_id (int, foreign key referencing publishers.publisher_id, nullable to allow experimentation)
 -- 3. Insert 3 publishers into the 'publishers' table
--- 4. Insert 5 books into the 'books' table, ensuring each book has a valid publisher_id
--- 5. Try inserting a book with an invalid publisher_id to see the foreign key constraint in action
--- 6. Write a query using an INNER JOIN to display each book’s title and its publisher’s name
+-- 4. Insert 5 books, with 3 having valid publisher_id values and 2 with NULL publisher_id
+-- 5. Write an INNER JOIN query to display each book’s title and its publisher’s name (only books with publishers)
+-- 6. Write a LEFT JOIN query with 'books' as the left table to include all books, even those without publishers
+-- 7. Write a LEFT JOIN query with 'publishers' as the left table to include all publishers, even those without books
+-- 8. Compare the results of INNER JOIN and both LEFT JOIN queries to see how unmatched rows are handled
 
 -- Task 2: Students and Courses
--- Objective: Model a relationship between students and courses they are enrolled in
+-- Objective: Model students and course enrollments, using INNER JOIN and LEFT JOIN
 -- Steps:
 -- 1. Create a 'students' table with columns:
 --    - student_id (serial, primary key)
@@ -134,12 +183,15 @@ select * from authors;
 --    - student_id (foreign key referencing students.student_id)
 --    - course_id (foreign key referencing courses.course_id)
 --    - enrollment_date (date)
--- 4. Insert 3 students and 3 courses
--- 5. Enroll students in courses by inserting records into the 'enrollments' table
--- 6. Write an INNER JOIN query to show each enrollment with the student’s name and course name
+-- 4. Insert 4 students and 3 courses
+-- 5. Insert enrollment records for 2 students in 2 courses each
+-- 6. Write an INNER JOIN query to show enrollments with student names and course names
+-- 7. Write a LEFT JOIN query with 'students' as the left table to show all students, including those not enrolled
+-- 8. Write a LEFT JOIN query with 'courses' as the left table to show all courses, including those with no enrollments
+-- 9. Compare the results to understand how LEFT JOIN includes unmatched rows with NULL values
 
 -- Task 3: Employees and Departments
--- Objective: Create a database for employees and their departments, using foreign keys and inner joins
+-- Objective: Create employee and department tables, query with INNER JOIN and LEFT JOIN
 -- Steps:
 -- 1. Create a 'departments' table with columns:
 --    - department_id (serial, primary key)
@@ -147,27 +199,37 @@ select * from authors;
 -- 2. Create an 'employees' table with columns:
 --    - employee_id (serial, primary key)
 --    - employee_name (varchar(100), not null)
---    - department_id (foreign key referencing departments.department_id)
--- 3. Insert 2 departments and 4 employees, ensuring each employee is assigned to a valid department
--- 4. Write an INNER JOIN query to display each employee’s name and their department’s name
--- 5. Experiment: Try inserting an employee with an invalid department_id and observe the error
+--    - department_id (int, foreign key referencing departments.department_id, nullable)
+-- 3. Insert 3 departments and 5 employees, with 2 employees having NULL department_id
+-- 4. Write an INNER JOIN query to display employees with their department names (only those with departments)
+-- 5. Write a LEFT JOIN query with 'employees' as the left table to include all employees, even those without departments
+-- 6. Write a LEFT JOIN query with 'departments' as the left table to include all departments, even those without employees
+-- 7. Try inserting an employee with an invalid department_id to test the foreign key constraint
+-- 8. Compare the results of INNER JOIN and both LEFT JOIN queries to observe NULL values for unmatched rows
 
--- Task 4: Extend the Original Database
--- Objective: Add a new table and use inner joins to combine data
+-- Task 4: Extend the Original Database with Genres
+-- Objective: Add a genres table and use INNER JOIN and LEFT JOIN
 -- Steps:
--- 1. Using the existing 'authors' and 'books' tables, create a new table called 'genres' with columns:
+-- 1. Create a 'genres' table with columns:
 --    - genre_id (serial, primary key)
 --    - genre_name (varchar(50), not null)
--- 2. Add a 'genre_id' column to the 'books' table as a foreign key referencing genres.genre_id
+-- 2. Alter the 'books' table to add a 'genre_id' column (int, foreign key referencing genres.genre_id, nullable)
 -- 3. Insert 3 genres (e.g., Fantasy, Mystery, Romance)
--- 4. Update the 'books' table to assign a genre_id to each book
--- 5. Write a query using INNER JOIN to display each book’s title, author’s name, and genre name
+-- 4. Update the 'books' table to assign genre_id to some books, leaving at least one book with NULL genre_id
+-- 5. Write an INNER JOIN query to display books with their titles, author names, and genre names (only books with genres)
+-- 6. Write a LEFT JOIN query with 'books' as the left table to include all books, even those without genres
+-- 7. Write a LEFT JOIN query with 'genres' as the left table to include all genres, even those not assigned to books
+-- 8. Compare the results to see how LEFT JOIN includes unmatched rows with NULL values
 
--- Task 5: Analyze Inner Join vs. Other Joins
--- Objective: Understand the difference between INNER JOIN and other join types
+-- Task 5: Compare INNER JOIN and LEFT JOIN
+-- Objective: Understand differences between INNER JOIN and LEFT JOIN using the 'authors' and 'books' tables
 -- Steps:
--- 1. Using the 'authors' and 'books' tables, modify the INNER JOIN query to use a LEFT JOIN:
---    select b.book_id, b.title, a.author_name from books as b left join authors as a on b.author_id = a.author_id
--- 2. Compare the results: Notice if any books appear with a NULL author (they won’t in this case due to the foreign key)
--- 3. Insert an author who has no books and use a RIGHT JOIN to see authors without books
--- 4. Write a brief explanation (as a comment) of the differences between INNER JOIN, LEFT JOIN, and RIGHT JOIN based on your results
+-- 1. Run the original INNER JOIN query (books and authors)
+-- 2. Run the LEFT JOIN query with 'books' as the left table
+-- 3. Run the LEFT JOIN query with 'authors' as the left table
+-- 4. (Optional) Remove the foreign key and not null constraints on books.author_id to allow NULL or invalid author_id values
+-- 5. Insert a book with a NULL author_id and re-run all queries
+-- 6. Write a comment explaining:
+--    - INNER JOIN: Only matched rows from both tables
+--    - LEFT JOIN: All rows from the left table, NULL for unmatched right table columns
+-- 7. Compare the results to see how LEFT JOIN handles unmatched rows with NULL values
