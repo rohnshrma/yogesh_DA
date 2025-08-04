@@ -144,6 +144,8 @@ left join books as b on b.author_id = a.author_id; -- 'left join books as b' ass
 -- LEFT JOIN (authors as left): Includes all authors, with NULL for book_id and title if an author has no books
 -- The second LEFT JOIN demonstrates the key difference, as authors like Toni Morrison have no books, resulting in NULL values
 
+
+
 -- REVISED PRACTICE TASKS TO REINFORCE FOREIGN KEY, INNER JOIN, AND LEFT JOIN CONCEPTS
 -- These tasks focus on creating tables with foreign keys and querying with INNER JOIN and LEFT JOIN
 -- RIGHT JOIN references have been removed as requested
@@ -233,3 +235,140 @@ left join books as b on b.author_id = a.author_id; -- 'left join books as b' ass
 --    - INNER JOIN: Only matched rows from both tables
 --    - LEFT JOIN: All rows from the left table, NULL for unmatched right table columns
 -- 7. Compare the results to see how LEFT JOIN handles unmatched rows with NULL values
+
+
+
+
+
+
+
+create table publishers(
+publisher_id serial primary key,
+publisher_name varchar(100) not null,
+country varchar(50)
+);
+
+
+create table books(
+book_id serial primary key,
+title varchar(200) not null,
+publication_year int,
+publisher_id int,
+foreign key (publisher_id) references publishers(publisher_id)
+);
+
+
+
+INSERT INTO publishers (publisher_name, country) VALUES
+('Penguin Books', 'UK'),
+('Random House', 'USA'),
+('HarperCollins', 'USA');
+
+
+INSERT INTO books (title, publication_year, publisher_id) VALUES
+('The Great Gatsby', 1925, 1),
+('1984', 1949, 2),
+('Pride and Prejudice', 1813, 1),
+('No Publisher Book 1', 2020, NULL),
+('No Publisher Book 2', 2021, NULL);
+
+
+
+
+
+select * from books;
+select * from publishers;
+
+
+
+select  b.title  , p.publisher_name
+from books b
+inner join publishers p on b.publisher_id = p.publisher_id;
+
+
+select  b.title ,b.publication_year , p.publisher_name
+from books b
+left join publishers p on p.publisher_id = b.publisher_id;
+
+
+select   p.publisher_name , b.title
+from publishers p
+left join books b on p.publisher_id = b.publisher_id;
+
+
+
+
+
+
+create table students(
+student_id serial primary key,
+student_name varchar (100) not null,
+email varchar (100)
+);
+
+
+create table courses(
+course_id serial primary key,
+course_name varchar (100) not null,
+credits int
+);
+
+
+
+create table enrollments(
+enrollment_id serial primary key,
+student_id int,
+course_id int ,
+enrollment_date date,
+foreign key (student_id)  references students(student_id), 
+foreign key (course_id)  references courses(course_id)
+)
+
+
+
+
+
+INSERT INTO students (student_name, email) VALUES
+('Alice Smith', 'alice@example.com'),
+('Bob Jones', 'bob@example.com'),
+('Cathy Lee', 'cathy@example.com'),
+('David Brown', 'david@example.com');
+
+
+INSERT INTO courses (course_name, credits) VALUES
+('Mathematics', 3),
+('Physics', 4),
+('History', 3);
+
+
+INSERT INTO enrollments (student_id, course_id, enrollment_date) VALUES
+(1, 1, '2025-01-15'),
+(1, 2, '2025-01-15'),
+(2, 1, '2025-01-16'),
+(2, 3, '2025-01-16');
+
+
+select * from enrollments;
+
+
+
+
+select s.student_name, c.course_name ,  e.enrollment_date
+from enrollments e
+inner join students s on e.student_id = s.student_id
+inner join courses c on e.course_id = c.course_id;
+
+
+
+select s.student_name, c.course_name , e.enrollment_date
+from students s
+left join enrollments e on s.student_id = e.student_id
+left join courses c on e.course_id = c.course_id;
+
+
+select c.course_name, s.student_name, e.enrollment_date
+from courses c
+left join enrollments e on c.course_id= e.student_id
+left join stxudents s on e.student_id = s.student_id;
+
+
