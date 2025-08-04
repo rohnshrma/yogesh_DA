@@ -372,3 +372,71 @@ left join enrollments e on c.course_id= e.student_id
 left join stxudents s on e.student_id = s.student_id;
 
 
+
+
+
+
+--- ////////////////////
+
+
+-- Assume 'authors' and 'books' tables exist; modify 'books' for this task
+CREATE TABLE authors (
+    author_id SERIAL PRIMARY KEY,
+    author_name VARCHAR(100) NOT NULL
+);
+
+-- Modify books table to include author_id (for this task)
+ALTER TABLE books
+ADD author_id INT,
+ADD FOREIGN KEY (author_id) REFERENCES authors(author_id);
+
+-- Insert authors
+INSERT INTO authors (author_name) VALUES
+('F. Scott Fitzgerald'),
+('George Orwell'),
+('Jane Austen');
+
+-- Update books with author_id
+UPDATE books SET author_id = 1 WHERE title = 'The Great Gatsby';
+UPDATE books SET author_id = 2 WHERE title = '1984';
+UPDATE books SET author_id = 3 WHERE title = 'Pride and Prejudice';
+
+-- 1. INNER JOIN: Books with authors
+SELECT b.title, a.author_name
+FROM books b
+INNER JOIN authors a ON b.author_id = a.author_id;
+
+-- 2. LEFT JOIN: All books, including those without authors
+SELECT b.title, a.author_name
+FROM books b
+LEFT JOIN authors a ON b.author_id = a.author_id;
+
+-- 3. LEFT JOIN: All authors, including those without books
+SELECT a.author_name, b.title
+FROM authors a
+LEFT JOIN books b ON a.author_id = b.author_id;
+
+-- 4. Remove foreign key and NOT NULL constraints
+ALTER TABLE books
+DROP CONSTRAINT books_author_id_fkey,
+ALTER COLUMN author_id DROP NOT NULL;
+
+-- 5. Insert a book with NULL author_id
+INSERT INTO books (title, publication_year, publisher_id, author_id) VALUES
+('Authorless Book', 2023, NULL, NULL);
+
+-- Re-run queries
+-- INNER JOIN
+SELECT b.title, a.author_name
+FROM books b
+INNER JOIN authors a ON b.author_id = a.author_id;
+
+-- LEFT JOIN (books left)
+SELECT b.title, a.author_name
+FROM books b
+LEFT JOIN authors a ON b.author_id = a.author_id;
+
+-- LEFT JOIN (authors left)
+SELECT a.author_name, b.title
+FROM authors a
+LEFT JOIN books b ON a.author_id = b.author_id;
