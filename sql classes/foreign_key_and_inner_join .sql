@@ -440,3 +440,18 @@ LEFT JOIN authors a ON b.author_id = a.author_id;
 SELECT a.author_name, b.title
 FROM authors a
 LEFT JOIN books b ON a.author_id = b.author_id;
+
+
+
+
+select s.student_name, e.course_id , e.enrollment_date
+from enrollments e
+right join students s on e.student_id  = s.student_id ;
+
+
+select s.student_name, e.course_id , e.enrollment_date
+from students s
+left join enrollments e on e.student_id  = s.student_id ;
+
+
+
