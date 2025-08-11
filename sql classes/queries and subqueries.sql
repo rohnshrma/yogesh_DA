@@ -77,3 +77,23 @@ where (
     -- The result of the inner query is like a temporary table called Customer_Total.
     -- We take the average of all the TotalAmount values from that table.
 );
+
+
+select CustomerName , (
+	select Max(Amount)
+	from Orders o
+	where o.CustomerID = c.CustomerID) as MaxOrderAmount 
+from Customers c;
+
+
+
+
+-- Retrieve all customer names and their countries.
+
+-- Find orders with an amount greater than 500.
+
+-- List customer names and their order amounts for all orders
+
+-- Calculate the total order amount per customer.
+
+-- List all orders sorted by amount in descending order.
