@@ -97,3 +97,81 @@ from Customers c;
 -- Calculate the total order amount per customer.
 
 -- List all orders sorted by amount in descending order.
+
+
+
+
+
+
+
+--Find customers who have at least one order
+
+
+
+-- Find orders from customers in the USA
+
+
+
+select OrderID, Amount, ProductCategory , CustomerID
+from Orders o
+where CustomerID in (
+	select CustomerID
+	from Customers c
+	where c.Country = 'USA'
+	);
+
+
+-- Find orders from customers who signed up after March 1, 2024
+select OrderID, Amount, ProductCategory , CustomerID
+from Orders o
+where CustomerID in (
+	select CustomerID
+	from Customers c
+	where c.SignUpDate  > '2024-03-1');
+
+-- Find orders in the 'Electronics' category from customers in Canada
+
+
+
+
+select OrderID, Amount, ProductCategory , CustomerID
+from Orders o
+where ProductCategory = 'Electronics' 
+and CustomerID in (
+	select CustomerID
+	from Customers c
+	where c.Country = 'Canada');
+
+
+
+
+-- Find orders from customers whose names start with 'A'
+-- Find orders with amounts greater than the customer’s first order amount
+
+-- Find orders placed in February 2025
+
+-- Find orders from customers in the UK with amounts over 300
+
+-- Find orders in the 'Books' category from customers who signed 
+-- up before May 2024
+
+-- Find orders with amounts less than the highest order amount
+
+-- Find orders from customers in the USA or Canada
+
+
+-- Find orders in Electronics or Clothing from customers not in the UK
+
+-- Find orders with amounts greater than 400 and not from customers who signed up in January
+
+-- Find orders from customers who signed up in March or April and ordered Books
+
+-- Find orders where the amount is less than 600 or the customer is from Canada
+
+
+
+
+
+
+
+
