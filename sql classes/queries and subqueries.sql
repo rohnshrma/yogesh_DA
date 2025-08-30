@@ -170,8 +170,75 @@ and CustomerID in (
 
 
 
+select CustomerName
+from Customers c
+where exists(
+	select 1 
+	from Orders o
+	where o.CustomerID = c.CustomerID);
+
+
+-- Find customer names and their orders in Electronics using INNER JOIN
+
+select c.CustomerName , o.OrderID, o.Amount , o.ProductCategory
+from Customers c
+inner join orders o on c.CustomerID = o.CustomerID
+where o.ProductCategory = 'Electronics'
+and c.CustomerID in (
+	select CustomerID 
+	from Customers
+	where extract( year from SignUpDate) = '2024'
+	)
+
+	
+	
+-- Find all customers and their orders, excluding those in the USA, 
+-- using LEFT JOIN	
+	
+select c.CustomerName , o.OrderID, o.Amount, o.ProductCategory
+from Customers c
+left join Orders o on o.CustomerID = c.CustomerID
+where c.CustomerID not in (
+	select CustomerID
+	from Customers
+	where Country = 'USA'
+);
+	
+	
+	
+	
+select c.CustomerName , o.OrderID, o.Amount, o.ProductCategory
+from Customers c
+left join Orders o on o.CustomerID = c.CustomerID
+where c.Country != 'USA';
 
 
 
 
+
+-- Find orders with customer names, including all orders, 
+-- for non-UK customers using RIGHT JOIN
+
+
+-- Find Books or Clothing orders from customers who signed up 
+-- in February or March using INNER JOIN
+
+-- Find customers and their orders with amounts less than their 
+-- highest order using LEFT JOIN
+
+
+-- Find customer names and their orders placed in January or 
+-- February 2025 using INNER JOIN
+
+-- Find all customers and their orders, excluding those who 
+-- ordered Electronics, using LEFT JOIN
+
+-- Find orders with customer names, including all orders, for 
+-- non-January signups using RIGHT JOIN
+
+-- Find customers and their orders with amounts over 400 
+-- or from Canada using INNER JOIN
+
+-- Find customers and their orders placed after signup, 
+--for Books or Clothing, using LEFT JOIN
 
