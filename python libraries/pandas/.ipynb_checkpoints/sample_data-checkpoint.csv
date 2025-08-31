@@ -1,0 +1,11 @@
+name,age,department,salary,date,email 
+John Doe,28,HR,50000,2023-01-15,john.doe@email.com 
+Jane Smith,,IT,60000,2023-02-10,jane.smith@email.com 
+Bob Jones,45,hr,75000,2023-03-20,bob.jones@email.com
+Alice Brown,32,Information Technology,55000,2023-04-05,alice.brown@email.com 
+John Doe,28,HR,50000,2023-01-15,john.doe@email.com 
+Tom Wilson,50,Finance,120000,2023-05-12,tom.wilson@email.com 
+Sara Lee,29,,65000,2023-06-18,sara.lee@email.com 
+Mike Chen,35,IT,80000,invalid_date,mike.chen@email.com 
+Emma Davis,60,Finance,200000,2023-07-22,emma.davis@email.com 
+Lisa Ray,27, HR ,52000,2023-08-10,lisa.ray@email.com
