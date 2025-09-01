@@ -1,0 +1,52 @@
+Date,Product,Category,Region,Units_Sold,Unit_Price,Sales_Rep,Total_Sales
+2024-01-15,Basmati Rice,Spices & Food,North,120,8.50,Anil,1020.00
+2024-01-15,Basmati Rice,Spices & Food,North,120,8.50,Anil,1020.00
+2024-02-03,Turmeric Powder,spices & food,West,80,3.20,Riya,256.00
+2024-13-10,Banarasi Silk Saree,Textiles & Fashion,East,15,150.00,Priya,2250.00
+2024-04-22,Khadi Kurta,Textiles & Fashion,South,null,25.00,Vikram,625.00
+2024-05-18,Ashwagandha Capsules,Wellness & Ayurvedic,North,90,12.00,Anil,1080.00
+2024-06-07,boAt Earphones,Electronics,West,200,null,,3600.00
+2024-07-12,Haldiram's Bhujia,Spices & Food,South,150,5.00,Priya,750.00
+2024-07-12,Haldiram's Bhujia,Spices & Food,South,150,5.00,Priya,750.00
+2024-08-09,Kundan Necklace,Jewelry & Handicrafts,East,10,200.00,Vikram,2000.00
+2024-09-14,Darjeeling Tea,Spices & Food,North,60,15.00,Anil,900.00
+2024-10-05,Neem Face Mask,Wellness & Ayurvedic,West,-70,10.00,Riya,700.00
+2024-11-20,Handloom Bedspread,Textiles & Fashion,South,25,50.00,Priya,1250.00
+2024-12-12,Amul Butter,Spices & Food,East,100,4.50,Vikram,450.00
+2024-01-25,Blue Pottery Vase,Jewelry & Handicrafts,North,20,30.00,Anil,600.00
+2024-02-14,Garam Masala,Spices & food,West,110,4.00,Riya,null
+2024-03-08,Organic Cotton Shirt,Textiles & Fashion,South,60,20.00,Priya,1200.00
+2024-04-17,Yoga Mat,Wellness & AYURVEDIC,East,85,15.00,Vikram,1275.00
+2024-05-22,Mixer Grinder,Electronics,North,30,60.00,null,1800.00
+2024-06-10,Parle-G Biscuits,Spices & Food,West,200,2.00,Riya,400.00
+2024-07-15,Brass Diya,Jewelry & Handicrafts,South,40,12.00,Priya,480.00
+2024-08-20,Mysore Sandal Soap,Wellness & Ayurvedic,East,150,3.50,Vikram,525.00
+2024-09-05,Bajaj Scooter,Automotive,North,5,800.00,Anil,4000.00
+2024-10-12,Handmade Carpet,Textiles & Fashion,West,8,250.00,Riya,2000.00
+2024-11-18,Paper Boat Aam Panna,Spices & Food,South,90,1.50,Priya,135.00
+2024-11-18,Paper Boat Aam Panna,Beverages,South,90,1.50,Priya,135.00
+2024-12-01,Himalaya Herbal Cream,Wellness & Ayurvedic,East,100,8.00,Vikram,800.00
+2024-01-30,Old Monk Rum,Beverages,North,50,12.00,Anil,600.00
+2024-02-22,Madhubani Painting,Jewelry & Handicrafts,West,12,100.00,Riya,1200.00
+2024-03-15,Snitch T-Shirt,Textiles & Fashion,South,70,15.00,Priya,1050.00
+2024-04-10,Dabur Chyawanprash,Spices & Food,East,80,10.00,null,800.00
+2024-05-25,Safari Luggage,Electronics,North,25,80.00,Anil,2000.00
+2024-06-18,Turmeric Face Mask,Wellness & Ayurvedic,West,60,9.00,Riya,540.00
+2024-07-20,Bhujia Papad,Spices & Food,South,120,2.50,Priya,300.00
+2024-08-12,Pashmina Shawl,Textiles & Fashion,East,10,120.00,Vikram,1200.00
+2024-09-22,Forest Essentials Oil,Wellness & Ayurvedic,North,30,2500.00,Anil,75000.00
+2024-10-15,Marble Coaster,Jewelry & Handicrafts,West,40,15.00,Riya,600.00
+2024-11-10,Cardamom Pods,Spices & Food,South,100,6.00,Priya,600.00
+2024-12-05,Allen Solly Shirt,Textiles & Fashion,East,50,30.00,Vikram,1500.00
+2024-01-08,Bamboo Tableware,Home & Kitchen,North,60,10.00,Anil,600.00
+2024-02-18,Rooh Afza,Beverages,West,80,5.00,Riya,400.00
+2024-03-20,Jaipur Rug,Textiles & Fashion,South,15,200.00,Priya,3000.00
+2024-04-25,Gillette Razor,Wellness & Ayurvedic,East,200,3.00,Vikram,600.00
+2024-05-30,Cinnamon Sticks,Spices & Food,North,90,4.00,Anil,360.00
+2024-06-22,Tabla Set,Musical Instruments,West,5,150.00,Riya,750.00
+2024-07-18,Indigo Cushion Cover,Home & Kitchen,South,40,12.00,Priya,480.00
+2024-07-18,Indigo Cushion Cover,Home & Kitchen,South,40,12.00,Priya,480.00
+2024-08-15,Kaama Ayurveda Soap,Wellness & Ayurvedic,East,100,7.00,Vikram,700.00
+2024-09-10,Britannia Cookies,Spices & Food,North,150,2.50,Anil,375.00
+2024-10-20,Khadi Face Mask,Textiles & Fashion,West,60,8.00,Riya,480.00
+2024-12-32,Sitar,Musical Instruments,South,3,500.00,null,1500.00

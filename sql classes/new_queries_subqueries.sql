@@ -280,5 +280,3 @@ group by author_id;
 -- * 'as avg_publication_year' names the calculated column
 -- * Concept: GROUP BY aggregates data for each author_id
 -- * Use Case: Use to compute summary statistics, like average publication year per author
-
-
