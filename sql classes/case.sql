@@ -18,11 +18,18 @@ values ('milk' , 38),
 
 
 
+
+
 --case
 --	when condition then result
 --	when condition then result
 --	else result
 --end 
+select name , amount ,
+case 
+	when amount >= 1000
+end
+
 
 
 
@@ -73,7 +80,7 @@ case
 	else 'Budget'
 end as availability_status
 from products
-order by amount asc;
+order by amount asc; 
 
 
 
@@ -87,6 +94,17 @@ order by amount asc;
 --Display the name, amount, and the discount eligibility.
 --
 --Hint: Use CASE with LIKE or LOWER(name) for case-insensitive matching.
+
+
+select name , amount,
+case 
+	when name like 'm%' or name like 'b%' then 'Eligible for 10% discount'
+	when name like '%paste%' then 'Eligible for 15% Discount'
+	else 'Not Eligible'
+end as discount_Eligibility
+from products;
+
+
 --Question 4: Price Tier with Adjusted Amount
 --Write a query to assign a price tier and adjust the amount based on the tier:
 --
@@ -96,6 +114,24 @@ order by amount asc;
 --Display the name, original amount, price tier, and the adjusted amount (as adjusted_amount).
 --
 --Hint: Use CASE for both the tier label and the price adjustment calculation.
+
+
+select name, amount,
+case 
+	when amount > 200 then 'Luxury' 
+	when amount >= 50 and amount <= 200 then 'Mid-Range'
+	else 'Economy'
+end as price_tier,
+case 
+	when amount > 200 then amount * 1.10
+	when amount >= 50 and amount <= 200 then amount
+	else amount * 0.95
+end as adjusted_amount
+from products;
+
+
+
+
 --Question 5: Category and Count Summary
 --Write a query to categorize products by price range and count the number of products in each category, as well as calculate the total amount for each category:
 --
@@ -108,3 +144,22 @@ order by amount asc;
 --
 --
 --
+
+
+
+
+select 
+case
+	when amount > 200 then 'Expensive'
+	when amount >= 50 and amount <= 200 then 'Moderate'
+	else 'Cheap'
+end as category,
+count(*) as product_count,
+sum (amount) as total_amount
+from products
+group by 
+	case 
+		when amount > 200 then 'Expensive'
+		when amount >= 50 and amount <= 200 then 'Moderate'	
+		else 'Cheap'
+	end;
