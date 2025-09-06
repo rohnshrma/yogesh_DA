@@ -1,0 +1,196 @@
+Customer_ID,Name,Email,Phone,Age,Gender,City,State
+1,Aarav Kumar,aarav.kumar@gmail.com,911234567890.0,28,Male,Mumbai,Maharashtra
+2,Vihaan Singh,vihaan.singh@yahoo.com,919876543210.0,35,Female,Pune,maharashtra
+3,Arjun Patel,arjun.patel@outlook.com,917000000000.0,42,Male,Lucknow,Uttar Pradesh
+4,Mohammed Gupta,mohammed.gupta@rediffmail.com,915555555555.0,29,Male,Chennai,Tamil Nadu
+5,Aryan Yadav,aryan.yadav@gmail.com,913333333333.0,51,Female,Patna,Bihar
+6,Aditya Reddy,aditya.reddy@hotmail.com,912222222222.0,23,Male,Kolkata,West bengal
+7,Shaurya Joshi,shaurya.joshi@outlook.com,911111111111.0,67,Male,Bhopal,Madhya Pradesh
+8,Aayush Nair,aayush.nair@gmail.com,919999999999.0,34,Male,Thiruvananthapuram,Kerala
+9,Atharv Rao,atharv.rao@yahoo.com,918888888888.0,45,Female,Bengaluru,Karnataka
+10,Sai Menon,sai.menon@rediffmail.com,917777777777.0,26,Male,Ahmedabad,Gujarat
+11,Anaya Iyer,anaya.iyer@outlook.com,916666666666.0,38,Male,Visakhapatnam,Andhra Pradesh
+12,Diya Pillai,diya.pillai@gmail.com,915444444444.0,55,Female,Bhubaneswar,Odisha
+13,Aaradhya Das,aaradhya.das@hotmail.com,914444444444.0,31,Male,Jaipur,Rajasthan
+14,Saanvi Chatterjee,saanvi.chatterjee@yahoo.com,913333333333.0,47,Female,Hyderabad,Telangana
+15,Pari Mukherjee,pari.mukherjee@rediffmail.com,912222222222.0,22,Male,Guwahati,Assam
+16,Myra Banerjee,myra.banerjee@outlook.com,911111111111.0,59,Female,Amritsar,Punjab
+17,Kiara Roy,kiara.roy@gmail.com,919999999999.0,33,Male,Ranchi,Jharkhand
+18,Aahana Saha,aahana.saha@yahoo.com,918888888888.0,41,Female,Raipur,Chhattisgarh
+19,Riya Ghosh,riya.ghosh@hotmail.com,917777777777.0,27,Male,Gurugram,Haryana
+20,Anika Kumar,anika.kumar@rediffmail.com,916666666666.0,52,Female,New Delhi,Delhi
+21,Aarav Kumar,aarav.kumar@gmail.com,911234567890.0,28,Male,Mumbai,Maharashtra
+23,Arjun Patel,arjun.patel@invalid,917000000000.0,42,Male,Lucknow,Uttar pradesh
+24,Mohammed Gupta,mohammed.gupta@gmail.com,915555555555.0,29,Male,Chennai,Tamil Nadu
+25,Aryan Yadav,aryan.yadav@yahoo.com,913333333333.0,150,Female,Patna,Bihar
+27,Shaurya Joshi,shaurya.joshi@outlook.com,911111111111.0,67,Male,Bhopal,Madhya Pradesh
+28,Aayush Nair,aayush.nair@gmail.com,919999999999.0,34,Male,Thiruvananthapuram,Kerala
+29,Atharv Rao,atharv.rao@hotmail.com,918888888888.0,45,Female,Bengaluru,Karnataka
+30,Sai Menon,sai.menon@rediffmail.com,917777777777.0,26,Male,Ahmedabad,Gujarat
+31,Anaya Iyer,anaya.iyer@yahoo.com,916666666666.0,38,Male,Visakhapatnam,Andhra Pradesh
+32,Diya Pillai,diya.pillai@outlook.com,915444444444.0,55,Female,Bhubaneswar,Odisha
+33,Aaradhya Das,aaradhya.das@gmail.com,914444444444.0,31,Male,Jaipur,Rajasthan
+34,Saanvi Chatterjee,saanvi.chatterjee@hotmail.com,913333333333.0,47,Female,Hyderabad,Telangana
+35,Pari Mukherjee,pari.mukherjee@rediffmail.com,912222222222.0,22,Male,Guwahati,Assam
+36,Myra Banerjee,myra.banerjee@outlook.com,911111111111.0,59,Female,Amritsar,Punjab
+37,Kiara Roy,kiara.roy@gmail.com,919999999999.0,33,Male,Ranchi,Jharkhand
+38,Aahana Saha,aahana.saha@yahoo.com,918888888888.0,41,Female,Raipur,Chhattisgarh
+39,Riya Ghosh,riya.ghosh@hotmail.com,917777777777.0,27,Male,Gurugram,Haryana
+40,Anika Kumar,anika.kumar@rediffmail.com,916666666666.0,52,Female,New Delhi,Delhi
+41,Aarav Kumar,aarav.kumar@gmail.com,911234567890.0,28,Male,Mumbai,Maharashtra
+42,Vihaan Singh,vihaan.singh@yahoo.com,919876543210.0,35,Female,Pune,Maharashtra
+43,Arjun Patel,arjun.patel@outlook.com,917000000000.0,42,Male,Lucknow,Uttar Pradesh
+45,Aryan Yadav,aryan.yadav@gmail.com,913333333333.0,51,Female,Patna,Bihar
+46,Aditya Reddy,aditya.reddy@hotmail.com,912222222222.0,23,Male,Kolkata,West Bengal
+47,Shaurya Joshi,shaurya.joshi@outlook.com,911111111111.0,-1,Male,Bhopal,Madhya Pradesh
+48,Aayush Nair,aayush.nair@gmail.com,919999999999.0,34,Male,Thiruvananthapuram,Kerala
+49,Atharv Rao,atharv.rao@yahoo.com,918888888888.0,45,Female,Bengaluru,Karnataka
+50,Sai Menon,sai.menon@rediffmail.com,917777777777.0,26,Male,Ahmedabad,Gujarat
+51,Anaya Iyer,anaya.iyer@outlook.com,916666666666.0,38,Male,Visakhapatnam,Andhra Pradesh
+52,Diya Pillai,diya.pillai@gmail.com,915444444444.0,55,Female,Bhubaneswar,Odisha
+53,Aaradhya Das,aaradhya.das@hotmail.com,914444444444.0,31,Male,Jaipur,Rajasthan
+54,Saanvi Chatterjee,saanvi.chatterjee@yahoo.com,913333333333.0,47,Female,Hyderabad,Telangana
+55,Pari Mukherjee,pari.mukherjee@rediffmail.com,912222222222.0,22,Male,Guwahati,Assam
+56,Myra Banerjee,myra.banerjee@outlook.com,911111111111.0,59,Female,Amritsar,Punjab
+57,Kiara Roy,kiara.roy@gmail.com,919999999999.0,33,Male,Ranchi,Jharkhand
+58,Aahana Saha,aahana.saha@yahoo.com,918888888888.0,41,Female,Raipur,Chhattisgarh
+59,Riya Ghosh,riya.ghosh@hotmail.com,917777777777.0,27,Male,Gurugram,Haryana
+60,Anika Kumar,anika.kumar@rediffmail.com,916666666666.0,52,Female,New Delhi,Delhi
+61,Aarav Kumar,aarav.kumar@gmail.com,911234567890.0,28,Male,Mumbai,Maharashtra
+62,Vihaan Singh,vihaan.singh@yahoo.com,919876543210.0,35,Female,Pune,Maharashtra
+63,Arjun Patel,arjun.patel@outlook.com,917000000000.0,42,Male,Lucknow,Uttar Pradesh
+65,Aryan Yadav,aryan.yadav@gmail.com,913333333333.0,51,Female,Patna,Bihar
+66,Aditya Reddy,aditya.reddy@hotmail.com,912222222222.0,23,Male,Kolkata,West Bengal
+67,Shaurya Joshi,shaurya.joshi@outlook.com,911111111111.0,-1,Male,Bhopal,Madhya Pradesh
+68,Aayush Nair,aayush.nair@gmail.com,919999999999.0,34,Male,Thiruvananthapuram,Kerala
+69,Atharv Rao,atharv.rao@yahoo.com,918888888888.0,45,Female,Bengaluru,Karnataka
+70,Sai Menon,sai.menon@rediffmail.com,917777777777.0,26,Male,Ahmedabad,Gujarat
+71,Anaya Iyer,anaya.iyer@outlook.com,916666666666.0,38,Male,Visakhapatnam,Andhra Pradesh
+72,Diya Pillai,diya.pillai@gmail.com,915444444444.0,55,Female,Bhubaneswar,Odisha
+73,Aaradhya Das,aaradhya.das@hotmail.com,914444444444.0,31,Male,Jaipur,Rajasthan
+74,Saanvi Chatterjee,saanvi.chatterjee@yahoo.com,913333333333.0,47,Female,Hyderabad,Telangana
+75,Pari Mukherjee,pari.mukherjee@rediffmail.com,912222222222.0,22,Male,Guwahati,Assam
+76,Myra Banerjee,myra.banerjee@outlook.com,911111111111.0,59,Female,Amritsar,Punjab
+77,Kiara Roy,kiara.roy@gmail.com,919999999999.0,33,Male,Ranchi,Jharkhand
+78,Aahana Saha,aahana.saha@yahoo.com,918888888888.0,41,Female,Raipur,Chhattisgarh
+79,Riya Ghosh,riya.ghosh@hotmail.com,917777777777.0,27,Male,Gurugram,Haryana
+80,Anika Kumar,anika.kumar@rediffmail.com,916666666666.0,52,Female,New Delhi,Delhi
+81,Aarav Kumar,aarav.kumar@gmail.com,911234567890.0,28,Male,Mumbai,Maharashtra
+82,Vihaan Singh,vihaan.singh@yahoo.com,919876543210.0,35,Female,Pune,Maharashtra
+83,Arjun Patel,arjun.patel@outlook.com,917000000000.0,42,Male,Lucknow,Uttar Pradesh
+84,Mohammed Gupta,mohammed.gupta@rediffmail.com,915555555555.0,29,Male,Chennai,Tamil Nadu
+85,Aryan Yadav,aryan.yadav@gmail.com,913333333333.0,51,Female,Patna,Bihar
+86,Aditya Reddy,aditya.reddy@hotmail.com,912222222222.0,23,Male,Kolkata,West Bengal
+87,Shaurya Joshi,shaurya.joshi@outlook.com,911111111111.0,67,Male,Bhopal,Madhya Pradesh
+88,Aayush Nair,aayush.nair@gmail.com,919999999999.0,34,Male,Thiruvananthapuram,Kerala
+89,Atharv Rao,atharv.rao@yahoo.com,918888888888.0,45,Female,Bengaluru,Karnataka
+90,Sai Menon,sai.menon@rediffmail.com,917777777777.0,26,Male,Ahmedabad,Gujarat
+91,Anaya Iyer,anaya.iyer@outlook.com,916666666666.0,38,Male,Visakhapatnam,Andhra Pradesh
+92,Diya Pillai,diya.pillai@gmail.com,915444444444.0,55,Female,Bhubaneswar,Odisha
+93,Aaradhya Das,aaradhya.das@hotmail.com,914444444444.0,31,Male,Jaipur,Rajasthan
+94,Saanvi Chatterjee,saanvi.chatterjee@yahoo.com,913333333333.0,47,Female,Hyderabad,Telangana
+95,Pari Mukherjee,pari.mukherjee@rediffmail.com,912222222222.0,22,Male,Guwahati,Assam
+96,Myra Banerjee,myra.banerjee@outlook.com,911111111111.0,59,Female,Amritsar,Punjab
+97,Kiara Roy,kiara.roy@gmail.com,919999999999.0,33,Male,Ranchi,Jharkhand
+98,Aahana Saha,aahana.saha@yahoo.com,918888888888.0,41,Female,Raipur,Chhattisgarh
+99,Riya Ghosh,riya.ghosh@hotmail.com,917777777777.0,27,Male,Gurugram,Haryana
+100,Anika Kumar,anika.kumar@rediffmail.com,916666666666.0,52,Female,New Delhi,Delhi
+101,Aarav Kumar,aarav.kumar@gmail.com,911234567890.0,28,Male,Mumbai,Maharashtra
+102,Vihaan Singh,vihaan.singh@yahoo.com,919876543210.0,35,Female,Pune,Maharashtra
+103,Arjun Patel,arjun.patel@outlook.com,917000000000.0,42,Male,Lucknow,Uttar Pradesh
+104,Mohammed Gupta,mohammed.gupta@rediffmail.com,915555555555.0,29,Male,Chennai,Tamil Nadu
+105,Aryan Yadav,aryan.yadav@gmail.com,913333333333.0,51,Female,Patna,Bihar
+106,Aditya Reddy,aditya.reddy@hotmail.com,912222222222.0,23,Male,Kolkata,West Bengal
+107,Shaurya Joshi,shaurya.joshi@outlook.com,911111111111.0,67,Male,Bhopal,Madhya Pradesh
+108,Aayush Nair,aayush.nair@gmail.com,919999999999.0,34,Male,Thiruvananthapuram,Kerala
+109,Atharv Rao,atharv.rao@yahoo.com,918888888888.0,45,Female,Bengaluru,Karnataka
+110,Sai Menon,sai.menon@rediffmail.com,917777777777.0,26,Male,Ahmedabad,Gujarat
+111,Anaya Iyer,anaya.iyer@outlook.com,916666666666.0,38,Male,Visakhapatnam,Andhra Pradesh
+112,Diya Pillai,diya.pillai@gmail.com,915444444444.0,55,Female,Bhubaneswar,Odisha
+113,Aaradhya Das,aaradhya.das@hotmail.com,914444444444.0,31,Male,Jaipur,Rajasthan
+114,Saanvi Chatterjee,saanvi.chatterjee@yahoo.com,913333333333.0,47,Female,Hyderabad,Telangana
+115,Pari Mukherjee,pari.mukherjee@rediffmail.com,912222222222.0,22,Male,Guwahati,Assam
+116,Myra Banerjee,myra.banerjee@outlook.com,911111111111.0,59,Female,Amritsar,Punjab
+117,Kiara Roy,kiara.roy@gmail.com,919999999999.0,33,Male,Ranchi,Jharkhand
+118,Aahana Saha,aahana.saha@yahoo.com,918888888888.0,41,Female,Raipur,Chhattisgarh
+119,Riya Ghosh,riya.ghosh@hotmail.com,917777777777.0,27,Male,Gurugram,Haryana
+120,Anika Kumar,anika.kumar@rediffmail.com,916666666666.0,52,Female,New Delhi,Delhi
+121,Aarav Kumar,aarav.kumar@gmail.com,911234567890.0,28,Male,Mumbai,Maharashtra
+122,Vihaan Singh,vihaan.singh@yahoo.com,919876543210.0,35,Female,Pune,Maharashtra
+123,Arjun Patel,arjun.patel@outlook.com,917000000000.0,42,Male,Lucknow,Uttar Pradesh
+124,Mohammed Gupta,mohammed.gupta@rediffmail.com,915555555555.0,29,Male,Chennai,Tamil Nadu
+125,Aryan Yadav,aryan.yadav@gmail.com,913333333333.0,51,Female,Patna,Bihar
+126,Aditya Reddy,aditya.reddy@hotmail.com,912222222222.0,23,Male,Kolkata,West Bengal
+127,Shaurya Joshi,shaurya.joshi@outlook.com,911111111111.0,67,Male,Bhopal,Madhya Pradesh
+128,Aayush Nair,aayush.nair@gmail.com,919999999999.0,34,Male,Thiruvananthapuram,Kerala
+129,Atharv Rao,atharv.rao@yahoo.com,918888888888.0,45,Female,Bengaluru,Karnataka
+130,Sai Menon,sai.menon@rediffmail.com,917777777777.0,26,Male,Ahmedabad,Gujarat
+131,Anaya Iyer,anaya.iyer@outlook.com,916666666666.0,38,Male,Visakhapatnam,Andhra Pradesh
+132,Diya Pillai,diya.pillai@gmail.com,915444444444.0,55,Female,Bhubaneswar,Odisha
+133,Aaradhya Das,aaradhya.das@hotmail.com,914444444444.0,31,Male,Jaipur,Rajasthan
+134,Saanvi Chatterjee,saanvi.chatterjee@yahoo.com,913333333333.0,47,Female,Hyderabad,Telangana
+135,Pari Mukherjee,pari.mukherjee@rediffmail.com,912222222222.0,22,Male,Guwahati,Assam
+136,Myra Banerjee,myra.banerjee@outlook.com,911111111111.0,59,Female,Amritsar,Punjab
+137,Kiara Roy,kiara.roy@gmail.com,919999999999.0,33,Male,Ranchi,Jharkhand
+138,Aahana Saha,aahana.saha@yahoo.com,918888888888.0,41,Female,Raipur,Chhattisgarh
+139,Riya Ghosh,riya.ghosh@hotmail.com,917777777777.0,27,Male,Gurugram,Haryana
+140,Anika Kumar,anika.kumar@rediffmail.com,916666666666.0,52,Female,New Delhi,Delhi
+141,Aarav Kumar,aarav.kumar@gmail.com,911234567890.0,28,Male,Mumbai,Maharashtra
+142,Vihaan Singh,vihaan.singh@yahoo.com,919876543210.0,35,Female,Pune,Maharashtra
+143,Arjun Patel,arjun.patel@outlook.com,917000000000.0,42,Male,Lucknow,Uttar Pradesh
+144,Mohammed Gupta,mohammed.gupta@rediffmail.com,915555555555.0,29,Male,Chennai,Tamil Nadu
+145,Aryan Yadav,aryan.yadav@gmail.com,913333333333.0,51,Female,Patna,Bihar
+146,Aditya Reddy,aditya.reddy@hotmail.com,912222222222.0,23,Male,Kolkata,West Bengal
+147,Shaurya Joshi,shaurya.joshi@outlook.com,911111111111.0,67,Male,Bhopal,Madhya Pradesh
+148,Aayush Nair,aayush.nair@gmail.com,919999999999.0,34,Male,Thiruvananthapuram,Kerala
+149,Atharv Rao,atharv.rao@yahoo.com,918888888888.0,45,Female,Bengaluru,Karnataka
+150,Sai Menon,sai.menon@rediffmail.com,917777777777.0,26,Male,Ahmedabad,Gujarat
+151,Anaya Iyer,anaya.iyer@outlook.com,916666666666.0,38,Male,Visakhapatnam,Andhra Pradesh
+152,Diya Pillai,diya.pillai@gmail.com,915444444444.0,55,Female,Bhubaneswar,Odisha
+153,Aaradhya Das,aaradhya.das@hotmail.com,914444444444.0,31,Male,Jaipur,Rajasthan
+154,Saanvi Chatterjee,saanvi.chatterjee@yahoo.com,913333333333.0,47,Female,Hyderabad,Telangana
+155,Pari Mukherjee,pari.mukherjee@rediffmail.com,912222222222.0,22,Male,Guwahati,Assam
+156,Myra Banerjee,myra.banerjee@outlook.com,911111111111.0,59,Female,Amritsar,Punjab
+157,Kiara Roy,kiara.roy@gmail.com,919999999999.0,33,Male,Ranchi,Jharkhand
+158,Aahana Saha,aahana.saha@yahoo.com,918888888888.0,41,Female,Raipur,Chhattisgarh
+159,Riya Ghosh,riya.ghosh@hotmail.com,917777777777.0,27,Male,Gurugram,Haryana
+160,Anika Kumar,anika.kumar@rediffmail.com,916666666666.0,52,Female,New Delhi,Delhi
+161,Aarav Kumar,aarav.kumar@gmail.com,911234567890.0,28,Male,Mumbai,Maharashtra
+162,Vihaan Singh,vihaan.singh@yahoo.com,919876543210.0,35,Female,Pune,Maharashtra
+163,Arjun Patel,arjun.patel@outlook.com,917000000000.0,42,Male,Lucknow,Uttar Pradesh
+164,Mohammed Gupta,mohammed.gupta@rediffmail.com,915555555555.0,29,Male,Chennai,Tamil Nadu
+165,Aryan Yadav,aryan.yadav@gmail.com,913333333333.0,51,Female,Patna,Bihar
+166,Aditya Reddy,aditya.reddy@hotmail.com,912222222222.0,23,Male,Kolkata,West Bengal
+167,Shaurya Joshi,shaurya.joshi@outlook.com,911111111111.0,67,Male,Bhopal,Madhya Pradesh
+168,Aayush Nair,aayush.nair@gmail.com,919999999999.0,34,Male,Thiruvananthapuram,Kerala
+169,Atharv Rao,atharv.rao@yahoo.com,918888888888.0,45,Female,Bengaluru,Karnataka
+170,Sai Menon,sai.menon@rediffmail.com,917777777777.0,26,Male,Ahmedabad,Gujarat
+171,Anaya Iyer,anaya.iyer@outlook.com,916666666666.0,38,Male,Visakhapatnam,Andhra Pradesh
+172,Diya Pillai,diya.pillai@gmail.com,915444444444.0,55,Female,Bhubaneswar,Odisha
+173,Aaradhya Das,aaradhya.das@hotmail.com,914444444444.0,31,Male,Jaipur,Rajasthan
+174,Saanvi Chatterjee,saanvi.chatterjee@yahoo.com,913333333333.0,47,Female,Hyderabad,Telangana
+175,Pari Mukherjee,pari.mukherjee@rediffmail.com,912222222222.0,22,Male,Guwahati,Assam
+176,Myra Banerjee,myra.banerjee@outlook.com,911111111111.0,59,Female,Amritsar,Punjab
+177,Kiara Roy,kiara.roy@gmail.com,919999999999.0,33,Male,Ranchi,Jharkhand
+178,Aahana Saha,aahana.saha@yahoo.com,918888888888.0,41,Female,Raipur,Chhattisgarh
+179,Riya Ghosh,riya.ghosh@hotmail.com,917777777777.0,27,Male,Gurugram,Haryana
+180,Anika Kumar,anika.kumar@rediffmail.com,916666666666.0,52,Female,New Delhi,Delhi
+181,Aarav Kumar,aarav.kumar@gmail.com,911234567890.0,28,Male,Mumbai,Maharashtra
+182,Vihaan Singh,vihaan.singh@yahoo.com,919876543210.0,35,Female,Pune,Maharashtra
+183,Arjun Patel,arjun.patel@outlook.com,917000000000.0,42,Male,Lucknow,Uttar Pradesh
+184,Mohammed Gupta,mohammed.gupta@rediffmail.com,915555555555.0,29,Male,Chennai,Tamil Nadu
+185,Aryan Yadav,aryan.yadav@gmail.com,913333333333.0,51,Female,Patna,Bihar
+186,Aditya Reddy,aditya.reddy@hotmail.com,912222222222.0,23,Male,Kolkata,West Bengal
+187,Shaurya Joshi,shaurya.joshi@outlook.com,911111111111.0,67,Male,Bhopal,Madhya Pradesh
+188,Aayush Nair,aayush.nair@gmail.com,919999999999.0,34,Male,Thiruvananthapuram,Kerala
+189,Atharv Rao,atharv.rao@yahoo.com,918888888888.0,45,Female,Bengaluru,Karnataka
+190,Sai Menon,sai.menon@rediffmail.com,917777777777.0,26,Male,Ahmedabad,Gujarat
+191,Anaya Iyer,anaya.iyer@outlook.com,916666666666.0,38,Male,Visakhapatnam,Andhra Pradesh
+192,Diya Pillai,diya.pillai@gmail.com,915444444444.0,55,Female,Bhubaneswar,Odisha
+193,Aaradhya Das,aaradhya.das@hotmail.com,914444444444.0,31,Male,Jaipur,Rajasthan
+194,Saanvi Chatterjee,saanvi.chatterjee@yahoo.com,913333333333.0,47,Female,Hyderabad,Telangana
+195,Pari Mukherjee,pari.mukherjee@rediffmail.com,912222222222.0,22,Male,Guwahati,Assam
+196,Myra Banerjee,myra.banerjee@outlook.com,911111111111.0,59,Female,Amritsar,Punjab
+197,Kiara Roy,kiara.roy@gmail.com,919999999999.0,33,Male,Ranchi,Jharkhand
+198,Aahana Saha,aahana.saha@yahoo.com,918888888888.0,41,Female,Raipur,Chhattisgarh
+199,Riya Ghosh,riya.ghosh@hotmail.com,917777777777.0,27,Male,Gurugram,Haryana
