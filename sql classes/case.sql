@@ -44,6 +44,16 @@ from products;
 --If amount is less than 100, apply a 5% tax.
 --Display the name, amount, and the calculated tax amount (as tax).
 --
+
+select name , amount,
+case 
+	when amount > 1000 then amount * 0.15
+	when amount >= 100 and amount <= 1000 then amount * 0.10
+	else amount * 0.5
+end as tax_amount
+from products;
+
+
 --Hint: Use a CASE statement to determine the tax rate and multiply it by amount.
 --Question 2: Product Availability
 --Write a query to assign an availability status based on the amount:
@@ -54,6 +64,20 @@ from products;
 --Display the name, amount, availability status, and sort the results by amount in ascending order.
 --
 --Hint: Use CASE for the status and add an ORDER BY clause.
+
+
+select name , amount,
+case 
+	when amount > 500 then 'Premium'
+	when amount >= 100 and amount <= 500 then 'Standard'
+	else 'Budget'
+end as availability_status
+from products
+order by amount asc;
+
+
+
+
 --Question 3: Name-Based Discount Eligibility
 --Write a query to determine discount eligibility based on the product name:
 --
