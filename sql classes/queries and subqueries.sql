@@ -1,4 +1,3 @@
-
 CREATE TABLE Customers (
     CustomerID INT PRIMARY KEY,
     CustomerName VARCHAR(100),
@@ -89,6 +88,8 @@ from Customers c;
 
 
 -- Retrieve all customer names and their countries.
+select CustomerName, Country
+from Customers
 
 -- Find orders with an amount greater than 500.
 
@@ -223,8 +224,24 @@ where c.Country != 'USA';
 -- Find Books or Clothing orders from customers who signed up 
 -- in February or March using INNER JOIN
 
+select  c.CustomerName, o.OrderID , o.Amount , o.ProductCategory
+from Customers c
+inner join Orders o on c.CustomerID = o.CustomerID
+where o.ProductCategory in ('Book' , 'Clothing')
+and extract (month from c.SignUpDate) in (2,3);
+
+
 -- Find customers and their orders with amounts less than their 
 -- highest order using LEFT JOIN
+
+select  c.CustomerName, o.OrderID , o.Amount , o.ProductCategory
+from Customers c
+left join Orders o on c.CustomerID = o.CustomerID
+where o.Amount < (
+	select max(o2.amount)
+	from orders o2
+	where o2.CustomerID = c.CustomerID
+	);
 
 
 -- Find customer names and their orders placed in January or 
@@ -233,12 +250,35 @@ where c.Country != 'USA';
 -- Find all customers and their orders, excluding those who 
 -- ordered Electronics, using LEFT JOIN
 
+select  c.CustomerName, o.OrderID , o.Amount , o.ProductCategory
+from Customers c
+left join Orders o on c.CustomerID = o.CustomerID
+where o.ProductCategory != 'Electronics';
+
 -- Find orders with customer names, including all orders, for 
 -- non-January signups using RIGHT JOIN
+
+select  c.CustomerName, o.OrderID , o.Amount , o.ProductCategory, c.SignUpDate
+from Customers c
+right join Orders o on c.CustomerID = o.CustomerID
+where extract(month from c.SignUpDate) != 1;
+
 
 -- Find customers and their orders with amounts over 400 
 -- or from Canada using INNER JOIN
 
+select  c.CustomerName, o.OrderID , o.Amount , o.ProductCategory, c.Country
+from Customers c
+inner join Orders o on c.CustomerID = o.CustomerID
+where o.Amount > 400
+or c.Country = 'Canada';
+
 -- Find customers and their orders placed after signup, 
 --for Books or Clothing, using LEFT JOIN
 
+
+SELECT c.CustomerName, o.OrderID, o.Amount, o.ProductCategory
+FROM Customers c
+LEFT JOIN Orders o ON o.CustomerID = c.CustomerID
+where o.OrderDate > c.SignUpDate
+and o.ProductCategory in ('Books', 'Clothing');
