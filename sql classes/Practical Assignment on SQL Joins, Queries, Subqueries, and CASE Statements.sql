@@ -77,17 +77,20 @@ INSERT INTO Orders (OrderID, EmployeeID, OrderDate, Product, Quantity, Price, Or
 --FirstName, LastName, DepartmentName, OrderID, and Product.
 
 
-select
-e.EmployeeID,
-e.FirstName,
-e.LastName,
-d.DepartmentName,
-o.OrderID,
-o.Product
-from Employees e
-left join Orders o on o.EmployeeID = e.EmployeeID
-left join Departments d on e.DepartmentID = d.DepartmentID;
-
+-- SELECT: Specifies columns to retrieve from the result set
+SELECT
+    e.EmployeeID,                  -- Selects EmployeeID from Employees table (aliased as 'e')
+    e.FirstName,                   -- Selects FirstName from Employees table
+    e.LastName,                    -- Selects LastName from Employees table
+    d.DepartmentName,              -- Selects DepartmentName from Departments table (aliased as 'd')
+    o.OrderID,                     -- Selects OrderID from Orders table (aliased as 'o')
+    o.Product                      -- Selects Product from Orders table
+-- FROM: Specifies the primary table and assigns alias 'e' to Employees
+FROM Employees e
+-- LEFT JOIN: Includes all employees, even those without orders (OrderID, Product will be NULL)
+LEFT JOIN Orders o ON o.EmployeeID = e.EmployeeID
+-- LEFT JOIN: Includes all employees, even those without a department (DepartmentName will be NULL)
+LEFT JOIN Departments d ON e.DepartmentID = d.DepartmentID;
 
 
 
@@ -95,81 +98,235 @@ left join Departments d on e.DepartmentID = d.DepartmentID;
 -- (Quantity * Price) greater than 500, including their
 -- department details. Display EmployeeID, FirstName, LastName, DepartmentName, and the total price.
 
-select
-e.EmployeeID,
-e.FirstName,
-e.LastName,
-d.DepartmentName,
-(o.Quantity * o.Price) as TotalPrice
-from Employees e
-inner join Orders o on o.EmployeeID = e.EmployeeID
-inner join Departments d on e.DepartmentID = d.DepartmentID
-where (o.Quantity * o.Price) > 500;
+-- SELECT: Specifies columns to retrieve
+SELECT
+    e.EmployeeID,                  -- Selects EmployeeID from Employees table
+    e.FirstName,                   -- Selects FirstName from Employees table
+    e.LastName,                    -- Selects LastName from Employees table
+    d.DepartmentName,              -- Selects DepartmentName from Departments table
+    (o.Quantity * o.Price) AS TotalPrice  -- Calculates total price (Quantity * Price) and names it TotalPrice
+-- FROM: Specifies the primary table with alias 'e'
+FROM Employees e
+-- INNER JOIN: Only includes employees with matching orders
+INNER JOIN Orders o ON o.EmployeeID = e.EmployeeID
+-- INNER JOIN: Only includes employees with matching departments
+INNER JOIN Departments d ON e.DepartmentID = d.DepartmentID
+-- WHERE: Filters rows where total price exceeds 500
+WHERE (o.Quantity * o.Price) > 500;
 
 -- 3. Subquery: Identify employees who have placed more than one order. 
 -- Display EmployeeID, FirstName, LastName, DepartmentName, and
 -- the number of orders.
 
-select
-e.EmployeeID,
-e.FirstName,
-e.LastName,
-d.DepartmentName,
-	(select count(*) 
-	from Orders o
-	where o.EmployeeID = e.EmployeeID)
-from Employees e
-left join Departments d on e.DepartmentID = d.DepartmentID
-where (select count(*) 
-	from Orders o
-	where o.EmployeeID = e.EmployeeID) > 1;
-
+-- SELECT: Specifies columns to retrieve
+SELECT
+    e.EmployeeID,                  -- Selects EmployeeID from Employees table
+    e.FirstName,                   -- Selects FirstName from Employees table
+    e.LastName,                    -- Selects LastName from Employees table
+    d.DepartmentName,              -- Selects DepartmentName from Departments table
+    (SELECT COUNT(*)              -- Subquery: Counts total orders for each employee
+     FROM Orders o
+     WHERE o.EmployeeID = e.EmployeeID) AS OrderCount  -- Correlates subquery with outer query
+-- FROM: Specifies the primary table with alias 'e'
+FROM Employees e
+-- LEFT JOIN: Includes all employees, even those without a department
+LEFT JOIN Departments d ON e.DepartmentID = d.DepartmentID
+-- WHERE: Filters employees with more than one order using the same subquery
+WHERE (SELECT COUNT(*) 
+       FROM Orders o
+       WHERE o.EmployeeID = e.EmployeeID) > 1;
 
 -- 4. CASE Statement: Categorize orders based on their total price (Quantity * Price) as 
 -- ’Low’ (< 100), ’Medium’ (100500), or ’High’ (> 500).
 -- Display OrderID, Product, DepartmentName, and the price category.
 
 
-select 
-	o.OrderID,
-	o.Product,
-	d.DepartmentName,
-	(o.Quantity * o.Price) as TotalPrice,
-	case 
-		when (o.Quantity * o.Price) < 100 then 'Low'
-		when (o.Quantity * o.Price) between 100 and 500 then 'Medium'
-		else 'High'
-	end as PriceCategory
-from Orders o
-inner join employees e on e.EmployeeID = o.EmployeeID
-left join Departments d on e.DepartmentID = d.DepartmentID;
-	
+-- SELECT: Specifies columns to retrieve
+SELECT 
+    o.OrderID,                     -- Selects OrderID from Orders table
+    o.Product,                     -- Selects Product from Orders table
+    d.DepartmentName,              -- Selects DepartmentName from Departments table
+    (o.Quantity * o.Price) AS TotalPrice,  -- Calculates total price and names it TotalPrice
+    CASE                           -- CASE: Assigns price category based on total price
+        WHEN (o.Quantity * o.Price) < 100 THEN 'Low'  -- Total price < 100 is 'Low'
+        WHEN (o.Quantity * o.Price) BETWEEN 100 AND 500 THEN 'Medium'  -- Total price 100-500 is 'Medium'
+        ELSE 'High'                -- Total price > 500 is 'High'
+    END AS PriceCategory           -- Names the derived column PriceCategory
+-- FROM: Specifies the primary table with alias 'o'
+FROM Orders o
+-- INNER JOIN: Only includes orders with matching employees
+INNER JOIN Employees e ON e.EmployeeID = o.EmployeeID
+-- LEFT JOIN: Includes orders even if employee has no department
+LEFT JOIN Departments d ON e.DepartmentID = d.DepartmentID;
 
 
---5. Data Cleaning - Handling NULLs: Replace NULL values in the Email column of the Employees table with ’No Email Provided’ and
---NULL DepartmentID with 6 (IT). Display EmployeeID, FirstName, LastName, Email, and DepartmentName.
---6. Aggregate with Join: Calculate the total revenue (sum of Quantity * Price) per department for delivered orders. Display DepartmentName,
+--5. Data Cleaning - Handling NULLs: Replace NULL values in the Email column of the Employees table with 
+--	’No Email Provided’ and
+-- 	NULL DepartmentID with 6 (IT). Display EmployeeID, FirstName, LastName, Email, and DepartmentName.
+
+
+-- SELECT: Specifies columns to retrieve
+SELECT 
+    e.EmployeeID,                  -- Selects EmployeeID from Employees table
+    e.FirstName,                   -- Selects FirstName from Employees table
+    e.LastName,                    -- Selects LastName from Employees table
+    COALESCE(e.Email, 'No Email Provided') AS Email,  -- Replaces NULL Email with 'No Email Provided'
+    d.DepartmentName               -- Selects DepartmentName from Departments table
+-- FROM: Specifies the primary table with alias 'e'
+FROM Employees e
+-- LEFT JOIN: Joins Departments, using DepartmentID 6 for NULL DepartmentID
+LEFT JOIN Departments d ON COALESCE(e.DepartmentID, 6) = d.DepartmentID;
+
+
+
+--6. Aggregate with Join: Calculate the total revenue (sum of Quantity * Price) per department for delivered orders.
+-- Display DepartmentName,
 --3
 --Location, and Total Revenue.
---7. Subquery with CASE: Identify employees hired before 2022-06-01 with at least one delivered order. Use a CASE statement to label them
---as ’Loyal’ if they have more than one delivered order, else ’Regular’. Display EmployeeID, FirstName, LastName, DepartmentName, and
---Loyalty Status.
---8. Complex Join with Data Cleaning: Retrieve all orders with employee and department details, replacing NULL HireDate with ’2022-01-01’
---and NULL Location with ’Unknown’. Include only orders with OrderStatus ’Delivered’ or ’Pending’. Display EmployeeID, FirstName,
---LastName, HireDate, DepartmentName, Location, OrderID, and Product.
+
+
+--7. Subquery with CASE: Identify employees hired before 2022-06-01 with at least one delivered order.
+-- Use a CASE statement to label them
+-- as ’Loyal’ if they have more than one delivered order, else ’Regular’.
+-- Display EmployeeID, FirstName, LastName, DepartmentName, and Loyalty Status.
+
+-- SELECT statement: Specifies the columns to retrieve from the database
+SELECT 
+    e.EmployeeID,                  -- Selects the EmployeeID column from the Employees table (aliased as 'e')
+    e.FirstName,                   -- Selects the FirstName column from the Employees table
+    e.LastName,                    -- Selects the LastName column from the Employees table
+    d.DepartmentName,              -- Selects the DepartmentName column from the Departments table (aliased as 'd')
+    -- CASE statement: Evaluates a condition to assign a value to a derived column (LoyaltyStatus)
+    CASE 
+        -- Subquery: Counts the number of 'Delivered' orders for the current employee
+        WHEN (SELECT COUNT(*) 
+              FROM Orders o 
+              WHERE o.EmployeeID = e.EmployeeID 
+              AND o.OrderStatus = 'Delivered') > 1 THEN 'Loyal'
+        -- If the count of delivered orders is greater than 1, assign 'Loyal'
+        ELSE 'Regular'             -- If the count is 0 or 1, assign 'Regular'
+    END AS LoyaltyStatus           -- Names the derived column as LoyaltyStatus
+-- FROM clause: Specifies the primary table (Employees) and assigns it an alias 'e'
+FROM Employees e
+-- LEFT JOIN: Joins the Departments table to Employees, including all employees even if they have no department
+LEFT JOIN Departments d 
+    ON e.DepartmentID = d.DepartmentID  -- Matches rows based on DepartmentID
+-- WHERE clause: Filters the result set based on specified conditions
+WHERE e.HireDate < '2022-06-01'  -- Only includes employees hired before June 1, 2022
+    AND EXISTS (                  -- EXISTS: Checks if at least one row matches the subquery condition
+        SELECT 1                 -- Returns a single value (1) to confirm existence; the value itself doesn't matter
+        FROM Orders o            -- Subquery references the Orders table (aliased as 'o')
+        WHERE o.EmployeeID = e.EmployeeID  -- Matches orders to the current employee
+        AND o.OrderStatus = 'Delivered'   -- Only considers orders with 'Delivered' status
+    );
+
+
+
+
+
+
+--8. Complex Join with Data Cleaning: Retrieve all orders with employee and department details,
+-- replacing NULL HireDate with ’2022-01-01’
+-- and NULL Location with ’Unknown’. Include only orders with OrderStatus ’Delivered’ or ’Pending’. 
+-- Display EmployeeID, FirstName,
+-- LastName, HireDate, DepartmentName, Location, OrderID, and Product.
+
+-- SELECT: Specifies columns to retrieve
+SELECT
+    e.EmployeeID,                  -- Selects EmployeeID from Employees table
+    e.FirstName,                   -- Selects FirstName from Employees table
+    e.LastName,                    -- Selects LastName from Employees table
+    COALESCE(e.HireDate, '2022-01-01') AS HireDate,  -- Replaces NULL HireDate with '2022-01-01'
+    d.DepartmentName,              -- Selects DepartmentName from Departments table
+    COALESCE(d.Location, 'Unknown') AS Location,  -- Replaces NULL Location with 'Unknown'
+    o.OrderID,                     -- Selects OrderID from Orders table
+    o.Product                      -- Selects Product from Orders table
+-- FROM: Specifies the primary table with alias 'o'
+FROM Orders o
+-- INNER JOIN: Only includes orders with matching employees
+INNER JOIN Employees e ON o.EmployeeID = e.EmployeeID
+-- LEFT JOIN: Includes orders even if employee has no department
+LEFT JOIN Departments d ON e.DepartmentID = d.DepartmentID
+-- WHERE: Filters for orders with 'Delivered' or 'Pending' status
+WHERE o.OrderStatus IN ('Delivered', 'Pending');
+
+
+
+
 --9. Nested Subquery: Find the employee who placed the most recent order, including their department details. Display EmployeeID, FirstName,
 --LastName, DepartmentName, and OrderDate.
+
+
 --10. Combining Joins and CASE: Display all orders with employee and department details. Use a CASE statement to flag orders as ’Expensive’
 --if the total price (Quantity * Price) exceeds 300, else ’Affordable’. Display EmployeeID, FirstName, DepartmentName, OrderID, Product,
 --and Price Flag.
---11. Group By with Subquery: Find departments with a total order value (Quantity * Price) exceeding 1000 for delivered orders. Display
+
+--11. Group By with Subquery: Find departments with a total order value (Quantity * Price) 
+--exceeding 1000 for delivered orders. Display
 --DepartmentName and the total order value.
---12. Multiple Joins with Filtering: Retrieve orders placed in 2023, including employee and department details. Display OrderID, Product,
+
+-- SELECT: Specifies columns to retrieve
+SELECT 
+    d.DepartmentName,              -- Selects DepartmentName from Departments table
+    SUM(o.Quantity * o.Price) AS TotalOrderValue  -- Calculates sum of total price for delivered orders
+-- FROM: Specifies the primary table with alias 'd'
+FROM Departments d
+-- INNER JOIN: Only includes departments with matching employees
+INNER JOIN Employees e ON d.DepartmentID = e.DepartmentID
+-- INNER JOIN: Only includes employees with matching delivered orders
+INNER JOIN Orders o ON e.EmployeeID = o.EmployeeID
+-- WHERE: Filters for 'Delivered' orders
+WHERE o.OrderStatus = 'Delivered'
+-- GROUP BY: Groups results by DepartmentName
+GROUP BY d.DepartmentName
+-- HAVING: Filters groups with total order value > 1000
+HAVING SUM(o.Quantity * o.Price) > 1000;
+
+
+--12. Multiple Joins with Filtering: Retrieve orders placed in 2023, 
+--including employee and department details. Display OrderID, Product,
 --OrderDate, EmployeeID, FirstName, LastName, and DepartmentName.
---13. Data Cleaning with CASE: Create a query to clean the OrderStatus column by standardizing values: change ’Delivered’ to ’Completed’,
---’Pending’ to ’In Progress’, and others to ’Other’. Display OrderID, EmployeeID, Product, and the cleaned OrderStatus.
---14. Subquery with Aggregation: Identify employees whose total order value (sum of Quantity * Price) exceeds the average total order value
---across all employees. Display EmployeeID, FirstName, LastName, and their total order value.
+
+
+
+
+
+--13. Data Cleaning with CASE: Create a query to clean the OrderStatus column by standardizing values:
+-- change ’Delivered’ to ’Completed’,
+--’Pending’ to ’In Progress’, and others to ’Other’. Display OrderID, EmployeeID, Product, 
+-- and the cleaned OrderStatus.
+
+
+
+-- 14. Subquery with Aggregation: Identify employees whose total order value (sum of Quantity * Price) 
+-- exceeds the average total order value
+-- across all employees. Display EmployeeID, FirstName, LastName, and their total order value.
+
+
+
+-- SELECT: Specifies columns to retrieve
+SELECT 
+    e.EmployeeID,                  -- Selects EmployeeID from Employees table
+    e.FirstName,                   -- Selects FirstName from Employees table
+    e.LastName,                    -- Selects LastName from Employees table
+    SUM(o.Quantity * o.Price) AS TotalOrderValue  -- Calculates sum of total price per employee
+-- FROM: Specifies the primary table with alias 'e'
+FROM Employees e
+-- INNER JOIN: Only includes employees with orders
+INNER JOIN Orders o ON e.EmployeeID = o.EmployeeID
+-- GROUP BY: Groups results by employee details for aggregation
+GROUP BY e.EmployeeID, e.FirstName, e.LastName
+-- HAVING: Filters employees whose total order value exceeds the average
+HAVING SUM(o.Quantity * o.Price) > (
+    SELECT AVG(TotalValue)        -- Subquery: Calculates average total order value across employees
+    FROM (
+        SELECT SUM(Quantity * Price) AS TotalValue  -- Calculates total order value per employee
+        FROM Orders
+        GROUP BY EmployeeID
+    ) AS AvgValues
+);
+
+
 --15. Complex CASE with Joins: Assign a performance tier to employees based on the number of orders: ’Top’ (> 3 orders), ’Mid’ (23 orders),
 --’Low’ (1 order), or ’None’ (0 orders). Display EmployeeID, FirstName, LastName, DepartmentName, and Performance Tier.
 --Instructions
