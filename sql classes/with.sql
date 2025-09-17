@@ -97,7 +97,40 @@ where (quantity * cost) > atc.avg_cost;
 
 
 -- Filter Products with Above-Average Cost
+
+with average_cost as ( select avg(cost) as avg_cost from store_inventory )
+select store_id, store_name, product, 	quantity , cost
+from store_inventory si , average_cost ac
+where cost > ac.avg_cost; 
+
 -- Count Products per Store
 
+
+with product_counts as (
+	select store_id, store_name, count(*) as product_count
+	from store_inventory
+	group by store_id, store_name)
+select store_id, store_name ,product_count
+from  product_counts
+order by product_count desc
+
+
+
+with store_totals as (
+	select store_id, 
+		store_name, 
+		sum (quantity) as total_quantity,
+		sum (quantity *cost) as total_cost
+	from store_inventory
+	group by store_id  , store_name 
+) ,
+	avg_store_cost as (
+	select avg (total_cost) as avg_cost
+	from store_totals
+	)
+select store_id, store_name, total_quantity, total_cost
+from store_totals  , avg_store_cost 
+where total_cost > avg_cost
+order by total_cost desc	
 
 
