@@ -101,7 +101,7 @@ INSERT INTO vehicle_inventory (dealership_id, dealership_name, vehicle_model, qu
 -- Requirements: Use three CTEs: one for total quantity per dealership, one for total inventory value per dealership, and one for the averages of quantity and value across all dealerships. Join them to filter dealerships where both metrics exceed the averages. Order by total inventory value descending.
 
 
-Thought for 29s-- Task 11: CTE with RANK - Find the Second-Highest Total Cost Vehicle per Dealership
+-- Task 11: CTE with RANK - Find the Second-Highest Total Cost Vehicle per Dealership
 -- Objective: Identify the vehicle with the second-highest total cost (quantity * unit_cost) in each dealership.
 -- Requirements: Use a single CTE to compute total cost per vehicle and apply the RANK() window function partitioned by dealership_id and ordered by total cost descending. Filter for rank = 2 in the outer query. Order by dealership_id and total cost descending.
 -- Task 12: CTE with ROW_NUMBER - Assign Unique Row Numbers to Vehicles by Unit Cost within Dealerships
