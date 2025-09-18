@@ -134,3 +134,61 @@ where total_cost > avg_cost
 order by total_cost desc	
 
 
+
+
+
+
+
+
+
+with product_values as (
+	select	store_id, store_name, product , quantity , cost , (quantity * cost) as total_value,
+	rank() over (partition by store_id order by (quantity * cost) desc) as value_rank
+	from store_inventory 
+)
+select store_id, store_name, product , quantity , cost , total_value , value_rank
+from product_values
+where value_rank = 1
+order by total_value desc;
+
+
+with high_value_products as (
+	select store_id, store_name, product, (quantity * cost) as total_value
+	from store_inventory si 
+	where (quantity * cost) > 3000
+)
+select distinct store_id , store_name ,total_value  from 
+high_value_products 
+order by store_id;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

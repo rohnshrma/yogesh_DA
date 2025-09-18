@@ -99,3 +99,20 @@ INSERT INTO vehicle_inventory (dealership_id, dealership_name, vehicle_model, qu
 -- Task 10: Multiple CTEs - Dealerships with High Quantity and Cost
 -- Objective: Identify dealerships where both the total quantity of vehicles and the total inventory value (quantity * unit_cost) are above their respective averages across all dealerships.
 -- Requirements: Use three CTEs: one for total quantity per dealership, one for total inventory value per dealership, and one for the averages of quantity and value across all dealerships. Join them to filter dealerships where both metrics exceed the averages. Order by total inventory value descending.
+
+
+Thought for 29s-- Task 11: CTE with RANK - Find the Second-Highest Total Cost Vehicle per Dealership
+-- Objective: Identify the vehicle with the second-highest total cost (quantity * unit_cost) in each dealership.
+-- Requirements: Use a single CTE to compute total cost per vehicle and apply the RANK() window function partitioned by dealership_id and ordered by total cost descending. Filter for rank = 2 in the outer query. Order by dealership_id and total cost descending.
+-- Task 12: CTE with ROW_NUMBER - Assign Unique Row Numbers to Vehicles by Unit Cost within Dealerships
+-- Objective: Assign a unique row number to each vehicle within its dealership based on descending unit cost, and select all vehicles.
+-- Requirements: Use a single CTE to compute row numbers using ROW_NUMBER() over partition by dealership_id ordered by unit_cost descending. Select all columns plus the row number from the CTE. Order by dealership_id and unit_cost descending.
+-- Task 13: Multiple CTEs with SUM Window - Calculate Running Total Inventory Value per Dealership
+-- Objective: For each dealership, calculate the running total inventory value (cumulative sum of quantity * unit_cost) for vehicles ordered by vehicle_model.
+-- Requirements: Use two CTEs: one to compute total cost per vehicle, and another to apply a SUM() window function over partition by dealership_id ordered by vehicle_model. Select from the second CTE including the running total. Order by dealership_id and vehicle_model.
+-- Task 14: CTE with LEAD - Compare Unit Cost to the Next Vehicle in Each Dealership
+-- Objective: For each vehicle in a dealership, show its unit cost and the unit cost of the next vehicle when ordered by descending total cost.
+-- Requirements: Use a single CTE to compute total cost and apply the LEAD(unit_cost) window function over partition by dealership_id ordered by (quantity * unit_cost) descending. Select vehicles where the lead value is not null. Order by dealership_id and total cost descending.
+-- Task 15: Multiple CTEs with NTILE - Group Vehicles into Quartiles by Total Cost within Dealerships
+-- Objective: Divide vehicles in each dealership into 4 quartiles based on total cost (quantity * unit_cost), and identify those in the top quartile.
+-- Requirements: Use two CTEs: one to compute total cost per vehicle, and another to apply NTILE(4) over partition by dealership_id ordered by total cost descending. Filter for quartile = 1 in the outer query. Order by dealership_id and total cost descending.4.1sExpertAre you satisfied with Grok's answer?How can Grok help?
